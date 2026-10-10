@@ -1,7 +1,47 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>All Things AI Dev Newsletter</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>All Things AI Dev Newsletter</title>
+<script>
+(() => {
+  const root = document.documentElement;
+  const key = "all-things-ai-dev-theme";
+  const stored = (() => { try { return localStorage.getItem(key); } catch { return null; } })();
+  const initial = stored === "dark" || stored === "light" ? stored
+    : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  root.dataset.theme = initial;
+})();
+</script>
 <style>
 :root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}*{box-sizing:border-box}body{margin:0;background:#e9e6df;color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(36px,7vw,62px)/1 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0}p{color:#43515b;max-width:680px}.issue{border-top:1px solid var(--line);padding:24px 0}.issue h2{font:700 28px/1.15 Georgia,serif;margin:0 0 10px}.issue a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:4px}.date{font:700 11px Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font:12px Arial,sans-serif}@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}}
-</style></head><body><main class="page"><div class="eyebrow">Independent newsletter · Mon–Sat</div><h1>All Things AI Dev Newsletter</h1><p>Practical reporting and ideas on using AI well and getting better at agentic development. Each issue includes source links, a “Why this matters” note, and a hands-on tool spotlight.</p>
+
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}
+:root[data-theme="dark"] body{background:#101315;color:var(--ink)}
+:root[data-theme="dark"] p{color:#d2d9dd}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;letter-spacing:.03em;text-transform:none;cursor:pointer;white-space:nowrap}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}}
+</style></head><body><main class="page"><div class="topbar"><div class="eyebrow">Independent newsletter · Mon–Sat</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div><h1>All Things AI Dev Newsletter</h1><p>Practical reporting and ideas on using AI well and getting better at agentic development. Each issue includes source links, a “Why this matters” note, and a hands-on tool spotlight.</p>
 <section class="issue"><div class="date">Saturday, October 10, 2026 · Weekly recap</div><h2><a href="./issues/2026-10-10-weekly-recap.html">When agents work, the process behind the delegation matters</a></h2><p>This week’s research and product releases point to a more deliberate way to supervise coding agents, choose models, and turn handoffs into repeatable engineering practice.</p><a href="./issues/2026-10-10-weekly-recap.html">Read the full article →</a></section>
-<footer>Issues are published as public webpages. Reporting links lead to original sources.</footer></main></body></html>
+<footer>Issues are published as public webpages. Reporting links lead to original sources.</footer></main><script>
+(() => {
+  const root = document.documentElement;
+  const button = document.getElementById("theme-toggle");
+  if (!button) return;
+  const key = "all-things-ai-dev-theme";
+  const sync = () => {
+    const dark = root.dataset.theme === "dark";
+    button.textContent = dark ? "Light mode" : "Dark mode";
+    button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    button.setAttribute("aria-pressed", String(dark));
+  };
+  sync();
+  button.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem(key, next); } catch {}
+    sync();
+  });
+})();
+</script>
+</body></html>
