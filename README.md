@@ -33,6 +33,10 @@ The workflow publishes after changes to `site/` reach the `main` branch. It can 
 
 Issues aim to distinguish reported facts from interpretation. Links point to original research, official release notes, product documentation, and credible independent reporting. Vendor performance or product claims are identified as such when relevant; fast-moving details are checked against current sources for each edition.
 
+## Editorial credits
+
+This newsletter and its website are produced by Bobby Gordon with research, writing, and technical assistance from OpenAI Codex, an AI assistant. Bobby reviews and directs the published work.
+
 ## Public site
 
 This repository and its GitHub Pages site are public. Articles may be shared by URL. The pages do not require a sign-in to read.
