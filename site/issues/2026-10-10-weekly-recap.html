@@ -3,14 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <title>All Things AI Dev Newsletter — Weekly Recap, October 10, 2026</title>
+<script>
+(() => {
+  const root = document.documentElement;
+  const key = "all-things-ai-dev-theme";
+  const stored = (() => { try { return localStorage.getItem(key); } catch { return null; } })();
+  const initial = stored === "dark" || stored === "light" ? stored
+    : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  root.dataset.theme = initial;
+})();
+</script>
 <style>
 :root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--line:#ddd9cf;--accent:#a33d25;--soft:#f0ece2;--blue:#31586b}*{box-sizing:border-box}body{margin:0;background:#e9e6df;color:var(--ink);font:17px/1.72 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);box-shadow:0 12px 40px #24313a19;padding:clamp(24px,6vw,72px)}.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;color:var(--muted);font:700 11px/1.3 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.masthead{font:800 clamp(30px,6vw,52px)/1.03 Arial,sans-serif;letter-spacing:-.055em;margin:28px 0 10px}.masthead span{color:var(--accent)}.edition{font:700 12px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}h1{font:700 clamp(34px,5.8vw,54px)/1.08 Georgia,serif;letter-spacing:-.035em;margin:24px 0 14px;max-width:740px}.deck{font-size:21px;line-height:1.5;color:#43515b;max-width:730px;margin:0 0 26px}.byline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:24px 0 36px;color:var(--muted);font:12px Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase}.lead{font-size:20px;line-height:1.62}.kicker{font:700 11px Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin:38px 0 7px}h2{font:700 29px/1.18 Georgia,serif;letter-spacing:-.02em;margin:0 0 12px}p{margin:0 0 16px}a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}.why{border-left:3px solid var(--accent);padding:9px 14px;margin:18px 0 4px;background:var(--soft);font-size:15px}.why strong{font:700 11px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:3px}.callout{margin:30px 0;padding:22px 24px;background:#eef2f1;border-top:3px solid var(--blue);font-size:20px;line-height:1.45}.callout small{display:block;margin-top:9px;color:var(--muted);font:700 10px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.toolbox{padding:22px 24px;background:#f4eee7;border:1px solid #e1d3c4;margin:20px 0}.toolbox h3{font:700 20px Arial,sans-serif;margin:0 0 12px}.toolbox p:last-child{margin-bottom:0}.sources{border-top:1px solid var(--line);margin-top:44px;padding-top:20px}.sources h2{font:700 15px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.sources ol{padding-left:20px;color:var(--muted);font-size:14px}.sources li{padding:3px 0}.footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font:11px/1.5 Arial,sans-serif;display:flex;justify-content:space-between;gap:12px}@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none;padding:24px 21px}.topline{font-size:9px}.deck{font-size:19px}.lead{font-size:18px}.footer{display:block}.footer span{display:block;margin-top:5px}}
+
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--line:#3c4348;--accent:#ef9d7e;--soft:#292c2e;--blue:#9dcde0}
+:root[data-theme="dark"] body{background:#101315;color:var(--ink)}
+:root[data-theme="dark"] .deck,:root[data-theme="dark"] p{color:#d2d9dd}
+:root[data-theme="dark"] .callout{background:#252e31}
+:root[data-theme="dark"] .toolbox{background:#292724;border-color:#47413b}
+:root[data-theme="dark"] .why{background:var(--soft)}
+.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;letter-spacing:.03em;text-transform:none;cursor:pointer;white-space:nowrap}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.topline{flex-wrap:wrap}.theme-toggle{margin-left:auto;padding:7px 10px}}
 </style>
 </head>
 <body><main class="page">
-<div class="topline"><span>Ideas for people building with AI</span><span>Vol. 01 &nbsp;·&nbsp; No. 01</span></div>
+<div class="topline"><span>Ideas for people building with AI</span><span>Vol. 01 &nbsp;·&nbsp; No. 01</span><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
 <header>
 <div class="masthead">All Things <span>AI Dev</span> Newsletter</div>
 <div class="edition">Weekly Recap &nbsp; / &nbsp; Saturday, October 10, 2026</div>
@@ -67,4 +88,25 @@
 <li><a href="https://mistral.ai/news/mistral-large-4/">Mistral, Large 4 preview and evaluation notes, October 6, 2026.</a></li>
 </ol></section>
 <div class="footer"><span>All Things AI Dev Newsletter</span><span>Prepared October 10, 2026 &nbsp;·&nbsp; Claims linked to original sources</span></div>
-</main></body></html>
+</main><script>
+(() => {
+  const root = document.documentElement;
+  const button = document.getElementById("theme-toggle");
+  if (!button) return;
+  const key = "all-things-ai-dev-theme";
+  const sync = () => {
+    const dark = root.dataset.theme === "dark";
+    button.textContent = dark ? "Light mode" : "Dark mode";
+    button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    button.setAttribute("aria-pressed", String(dark));
+  };
+  sync();
+  button.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem(key, next); } catch {}
+    sync();
+  });
+})();
+</script>
+</body></html>
