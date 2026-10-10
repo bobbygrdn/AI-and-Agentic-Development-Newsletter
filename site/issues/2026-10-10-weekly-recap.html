@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>All Things AI Dev Newsletter — Weekly Recap, October 10, 2026</title>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--line:#ddd9cf;--accent:#a33d25;--soft:#f0ece2;--blue:#31586b}*{box-sizing:border-box}body{margin:0;background:#e9e6df;color:var(--ink);font:17px/1.72 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);box-shadow:0 12px 40px #24313a19;padding:clamp(24px,6vw,72px)}.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;color:var(--muted);font:700 11px/1.3 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.masthead{font:800 clamp(30px,6vw,52px)/1.03 Arial,sans-serif;letter-spacing:-.055em;margin:28px 0 10px}.masthead span{color:var(--accent)}.edition{font:700 12px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}h1{font:700 clamp(34px,5.8vw,54px)/1.08 Georgia,serif;letter-spacing:-.035em;margin:24px 0 14px;max-width:740px}.deck{font-size:21px;line-height:1.5;color:#43515b;max-width:730px;margin:0 0 26px}.byline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:24px 0 36px;color:var(--muted);font:12px Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase}.lead{font-size:20px;line-height:1.62}.kicker{font:700 11px Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin:38px 0 7px}h2{font:700 29px/1.18 Georgia,serif;letter-spacing:-.02em;margin:0 0 12px}p{margin:0 0 16px}a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}.why{border-left:3px solid var(--accent);padding:9px 14px;margin:18px 0 4px;background:var(--soft);font-size:15px}.why strong{font:700 11px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:3px}.callout{margin:30px 0;padding:22px 24px;background:#eef2f1;border-top:3px solid var(--blue);font-size:20px;line-height:1.45}.callout small{display:block;margin-top:9px;color:var(--muted);font:700 10px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.toolbox{padding:22px 24px;background:#f4eee7;border:1px solid #e1d3c4;margin:20px 0}.toolbox h3{font:700 20px Arial,sans-serif;margin:0 0 12px}.toolbox p:last-child{margin-bottom:0}.sources{border-top:1px solid var(--line);margin-top:44px;padding-top:20px}.sources h2{font:700 15px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.sources ol{padding-left:20px;color:var(--muted);font-size:14px}.sources li{padding:3px 0}.footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font:11px/1.5 Arial,sans-serif;display:flex;justify-content:space-between;gap:12px}@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none;padding:24px 21px}.topline{font-size:9px}.deck{font-size:19px}.lead{font-size:18px}.footer{display:block}.footer span{display:block;margin-top:5px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topline"><span>Ideas for people building with AI</span><span>Vol. 01 &nbsp;·&nbsp; No. 01</span></div>
+<header>
+<div class="masthead">All Things <span>AI Dev</span> Newsletter</div>
+<div class="edition">Weekly Recap &nbsp; / &nbsp; Saturday, October 10, 2026</div>
+<h1>The week agents got faster—and supervision mattered more</h1>
+<p class="deck">This week’s signal: as coding agents take on more work, the craft is increasingly about setting the right boundaries, preserving trustworthy context, and checking what the agent actually did.</p>
+<div class="byline">The week in AI development &nbsp; · &nbsp; 5–10 minute read</div>
+</header>
+<p class="lead">A new developer survey, fresh research on delegation, and several model and security launches all point toward the same practical question: how do we get the speed of AI assistance without losing control of quality?</p>
+
+<div class="kicker">The working relationship</div>
+<h2>Delegation creates a new kind of engineering work</h2>
+<p>A September study of 19 experienced developers maps the supervision work around coding agents into connected stages: planning, delegating, monitoring, checking, and turning recurring guidance into reusable assets. The sample is small and exploratory, so it does not establish a universal workflow. Its useful contribution is the frame: agentic work includes the work of supervising, not just the code the agent produces. <a href="https://arxiv.org/abs/2609.24234">Read the study on arXiv</a>.</p>
+<p>That suggests a concrete routine for your next task: define the desired result and constraints before delegation; ask for a short plan when the change is broad; and require a summary of files changed, checks run, and remaining uncertainty. When guidance repeats, preserve it in project instructions or tests.</p>
+<div class="why"><strong>Why this matters</strong>Better supervision can make delegation repeatable: fewer surprises, clearer reviews, and less rediscovery on the next task.</div>
+
+<div class="kicker">The evidence</div>
+<h2>Developers are adopting AI—but trust remains conditional</h2>
+<p>Stack Overflow’s 2026 survey, published October 6, collected more than 30,000 responses across 169 countries. Its headline is not simply “AI is popular”: six in ten respondents view workplace AI favorably, while nearly half say they trust AI output when they can easily verify it. The survey also reports that 52% learned a new coding skill or language this year; technical documentation and AI coding tools were both common learning resources. These are self-reported survey findings, not a controlled productivity study. <a href="https://stackoverflow.co/company/press/archive/stack-overflow-annual-developer-survey-ai-trust-conditional">Survey summary</a> · <a href="https://survey.stackoverflow.co/2026/ai/data">AI data and breakdowns</a>.</p>
+<p>In practice, make verification part of the prompt: ask for the relevant tests, edge cases, and a concise explanation of the change. Then inspect the diff yourself. The model’s confidence is not evidence; a repeatable check is.</p>
+<div class="why"><strong>Why this matters</strong>The strongest everyday AI workflow is one where the result is easy to verify, not merely quick to generate.</div>
+
+<div class="callout">“A useful handoff says what success looks like—and what evidence should come back.”<small>This week’s practical takeaway</small></div>
+
+<div class="kicker">New tool spotlight</div>
+<h2>Bitdefender AI Guardian adds a checkpoint for agent actions</h2>
+<div class="toolbox">
+<h3>What it does</h3>
+<p>Bitdefender’s AI Guardian is a new macOS security product, announced September 30 and made available in public beta. It sits alongside supported agents and checks actions such as tool calls, file access, and credential use against policies, returning an allow, flag, or block decision. The launch currently names Claude Code and OpenClaw as supported agents. <a href="https://www.bitdefender.com/en-us/news/bitdefender-unveils-ai-guardian%2C-an-advanced-security-layer-developed-for-autonomous-ai-agents">Bitdefender’s announcement</a> · <a href="https://ai.bitdefender.com/ai-guardian">Product and compatibility details</a>.</p>
+<h3>Why it was built</h3>
+<p>Agents can do more than suggest code: they can use tools and access local files or credentials. Bitdefender says AI Guardian is meant to add visibility and policy controls around those actions, including risks such as prompt injection and unsafe tool use. Those are the vendor’s stated goals; a beta product should be evaluated in your own setup and should not be treated as complete protection.</p>
+<h3>How to try it</h3>
+<p>If you use macOS and one of the supported agents, get the beta from Bitdefender’s product page, follow its setup instructions, and try it first on a low-risk task. Review which actions it allows, flags, or blocks, and keep the agent’s access scoped. Availability and compatibility can change while the product is in beta.</p>
+</div>
+<div class="why"><strong>Why this matters</strong>As agents gain permission to act, security needs to cover their actions and data access—not just the text they return.</div>
+
+<div class="kicker">Model watch</div>
+<h2>Two different bets: cheaper small models and open weights</h2>
+<p>Anthropic introduced Claude Haiku 5.5 on October 7, positioning it for fast, high-volume work such as classification, summaries, and as a coding subagent. The company reports substantial cost reductions versus its prior Haiku model; those performance and pricing claims are vendor-reported. <a href="https://www.anthropic.com/claude-haiku-5-5">Anthropic’s release details</a>.</p>
+<p>Mistral published a preview of Large 4 on October 6, describing it as a large multimodal, open-weight model and offering API access ahead of a planned weights release. Mistral’s internal evaluation reports coding performance near a comparison model; independent rankings and broader real-world results will be more informative as they arrive. <a href="https://mistral.ai/news/mistral-large-4/">Mistral’s announcement and evaluation notes</a>.</p>
+<p>For developers, these launches underline a useful model-selection habit: route bounded, repetitive sub-tasks to a faster or lower-cost model only after checking quality on your own examples. Keep the harder reasoning or sensitive steps on the model and workflow that meet your requirements.</p>
+<div class="why"><strong>Why this matters</strong>Model choice is becoming a workflow decision: the right mix can improve speed and cost without quietly lowering the bar for correctness.</div>
+
+<div class="kicker">Try it next week</div>
+<h2>Write a tiny “delegation contract” before the next agent task</h2>
+<p>Before you delegate, note four things: the outcome, what must stay unchanged, the edge case most likely to break, and the proof you want back. After the run, compare the result with that contract. Add any recurring failure to a test or a reusable project instruction.</p>
+<div class="why"><strong>Why this matters</strong>A small, repeatable handoff turns each agent session into a chance to improve the next one.</div>
+
+<section class="sources"><h2>Sources & further reading</h2><ol>
+<li><a href="https://arxiv.org/abs/2609.24234">Park et al., “The Work Behind Delegation: A Framework for Supervising AI Coding Agents,” arXiv, September 2026.</a></li>
+<li><a href="https://stackoverflow.co/company/press/archive/stack-overflow-annual-developer-survey-ai-trust-conditional">Stack Overflow, 2026 Developer Survey press summary, October 6, 2026.</a></li>
+<li><a href="https://survey.stackoverflow.co/2026/ai/data">Stack Overflow, 2026 survey AI results and data.</a></li>
+<li><a href="https://www.bitdefender.com/en-us/news/bitdefender-unveils-ai-guardian%2C-an-advanced-security-layer-developed-for-autonomous-ai-agents">Bitdefender, AI Guardian public beta announcement, September 30, 2026.</a></li>
+<li><a href="https://www.anthropic.com/claude-haiku-5-5">Anthropic, Claude Haiku 5.5 release, October 7, 2026.</a></li>
+<li><a href="https://mistral.ai/news/mistral-large-4/">Mistral, Large 4 preview and evaluation notes, October 6, 2026.</a></li>
+</ol></section>
+<div class="footer"><span>All Things AI Dev Newsletter</span><span>Prepared October 10, 2026 &nbsp;·&nbsp; Claims linked to original sources</span></div>
+</main></body></html>
