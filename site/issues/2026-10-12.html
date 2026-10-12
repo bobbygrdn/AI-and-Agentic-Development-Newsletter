@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>All Things AI Dev Newsletter — Monday, October 12, 2026</title>
+<script>
+(() => {
+  const root = document.documentElement;
+  const key = "all-things-ai-dev-theme";
+  const stored = (() => { try { return localStorage.getItem(key); } catch { return null; } })();
+  const initial = stored === "dark" || stored === "light" ? stored
+    : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  root.dataset.theme = initial;
+})();
+</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--line:#ddd9cf;--accent:#a33d25;--soft:#f0ece2;--blue:#31586b}*{box-sizing:border-box}body{margin:0;background:#e9e6df;color:var(--ink);font:17px/1.72 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);box-shadow:0 12px 40px #24313a19;padding:clamp(24px,6vw,72px)}.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;color:var(--muted);font:700 11px/1.3 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.masthead{font:800 clamp(30px,6vw,52px)/1.03 Arial,sans-serif;letter-spacing:-.055em;margin:28px 0 10px}.masthead span{color:var(--accent)}.edition{font:700 12px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}h1{font:700 clamp(34px,5.8vw,54px)/1.08 Georgia,serif;letter-spacing:-.035em;margin:24px 0 14px;max-width:740px}.deck{font-size:21px;line-height:1.5;color:#43515b;max-width:730px;margin:0 0 26px}.byline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:24px 0 36px;color:var(--muted);font:12px Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase}.lead{font-size:20px;line-height:1.62}.kicker{font:700 11px Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin:38px 0 7px}h2{font:700 29px/1.18 Georgia,serif;letter-spacing:-.02em;margin:0 0 12px}p{margin:0 0 16px}a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}.why{border-left:3px solid var(--accent);padding:9px 14px;margin:18px 0 4px;background:var(--soft);font-size:15px}.why strong{font:700 11px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:3px}.callout{margin:30px 0;padding:22px 24px;background:#eef2f1;border-top:3px solid var(--blue);font-size:20px;line-height:1.45}.callout small{display:block;margin-top:9px;color:var(--muted);font:700 10px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.toolbox{padding:22px 24px;background:#f4eee7;border:1px solid #e1d3c4;margin:20px 0}.toolbox h3{font:700 20px Arial,sans-serif;margin:0 0 12px}.toolbox p:last-child{margin-bottom:0}.sources{border-top:1px solid var(--line);margin-top:44px;padding-top:20px}.sources h2{font:700 15px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.sources ol{padding-left:20px;color:var(--muted);font-size:14px}.sources li{padding:3px 0}.footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font:11px/1.5 Arial,sans-serif;display:flex;justify-content:space-between;gap:12px}@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none;padding:24px 21px}.topline{font-size:9px}.deck{font-size:19px}.lead{font-size:18px}.footer{display:block}.footer span{display:block;margin-top:5px}}
+
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--line:#3c4348;--accent:#ef9d7e;--soft:#292c2e;--blue:#9dcde0}
+:root[data-theme="dark"] body{background:#101315;color:var(--ink)}
+:root[data-theme="dark"] .deck,:root[data-theme="dark"] p{color:#d2d9dd}
+:root[data-theme="dark"] .callout{background:#252e31}
+:root[data-theme="dark"] .toolbox{background:#292724;border-color:#47413b}
+:root[data-theme="dark"] .why{background:var(--soft)}
+.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;letter-spacing:.03em;text-transform:none;cursor:pointer;white-space:nowrap}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.topline{flex-wrap:wrap}.theme-toggle{margin-left:auto;padding:7px 10px}}
+.article-nav{margin:0 0 18px;font:700 12px/1.4 Arial,sans-serif}.article-nav a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}.article-nav a:hover{color:var(--accent)}.article-nav a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body><main class="page">
+<nav class="article-nav" aria-label="Article navigation"><a href="../">← Back to all issues</a></nav>
+<div class="topline"><span>Ideas for people building with AI</span><span>Vol. 01 &nbsp;·&nbsp; No. 01</span><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<heade<header>
+<div class="masthead">All Things <span>AI Dev</span> Newsletter</div>
+<div class="edition">Monday Edition &nbsp; / &nbsp; Monday, October 12, 2026</div>
+<h1>More code, longer queues: learning to work with agents</h1>
+<p class="deck">Today’s evidence points to a practical truth: AI agents can speed up coding, but the value still depends on how teams scope, test, review, and ship their work.</p>
+<div class="byline">AI development &amp; agentic practice &nbsp; · &nbsp; 5–7 minute read</div>
+</header>
+
+<p class="lead">Today’s agent story is bigger than a model launch. New evidence suggests coding agents can help teams produce more code, while review and delivery remain the places where work can pile up. The skill to practice is not simply asking an agent to do more; it is designing the handoff so that its work is small enough to verify and useful enough to ship.</p>
+
+<div class="kicker">The work behind the work</div>
+<h2>More code is not automatically more software</h2>
+<p>A new working paper from researchers at Harvard and the University of Pennsylvania analyzes engineering activity across roughly 700 firms. After organizations adopted coding agents, the researchers estimate increases in lines of code, commits, and pull requests. But they did not find a statistically significant increase in resolved Jira issues or epics. They also observed longer review times and more requested changes. The paper uses firm level adoption data and a difference in differences design; those results describe this dataset and period, not a guarantee about every team or tool. <a href="https://fion.ac/jellyfish.pdf">Read the paper</a>.</p>
+<p>That gap offers a practical lesson: aim an agent at a well-bounded piece of work, and make the acceptance evidence part of the request. Ask for a focused diff, the tests that demonstrate the behavior, and any assumptions it could not verify. Track work that reaches “done” in production, not just output volume.</p>
+<div class="why"><strong>Why this matters</strong>If review and delivery are the bottlenecks, generating more code faster can simply move the queue downstream.</div>
+
+<div class="kicker">A useful counterpoint</div>
+<h2>Recent research finds testing discipline can improve</h2>
+<p>A paper published October 5 in the proceedings of the International Symposium on Empirical Software Engineering and Measurement followed 669 developers across 103 repositories and compared them with 228 controls. It reports longer pull request descriptions and smaller improvements across three testing measures after agent adoption, while coding effort stayed stable. Review became faster, less detailed, and more permissive in both agent and control repositories, so the authors attribute that pattern to broader changes rather than agents alone. <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ESEM.2026.67">Read the open access study</a>.</p>
+<p>Put the two studies together carefully: agents may increase coding throughput and teams may respond with better descriptions and testing, yet organizational output still depends on review, deployment, and the actual value of the change. A useful habit is to ask the agent to explain what each test proves, then inspect both the test and implementation. This makes “tests passed” more informative than a bare status line.</p>
+<div class="why"><strong>Why this matters</strong>Agentic development gets better when testing and review are designed into the task instead of added after generation.</div>
+
+<div class="callout">“Ask for the smallest change that proves the behavior, then make the proof easy to inspect.”<small>A practical handoff for today</small></div>
+
+<div class="kicker">New tool spotlight · October 12</div>
+<h2>Muse Wonder brings long-running agents into Meta’s coding lineup</h2>
+<div class="toolbox">
+<h3>What it does</h3>
+<p>Meta announced Muse Wonder and Muse Wonder Full today. Meta describes them as models for coding, computer use, and longer running agent tasks that can plan, delegate to subagents, call tools, and recover from errors. The product page says Muse Code brings multi-agent coding into a terminal workflow. These capability descriptions and benchmark claims come from Meta; independent reporting confirms the launch but does not yet establish comparative real world performance. <a href="https://about.fb.com/news/2026/10/introducing-muse-wonder-models/">Meta’s launch announcement</a> · <a href="https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/">TechCrunch’s independent report</a>.</p>
+<h3>Why it was built</h3>
+<p>Meta says it designed the family for work that unfolds over time: Active Memory carries relevant context across conversations, while Active Focus keeps trying alternatives, recovers from errors, and checks in before important actions. In other words, the product is aimed at tasks that require continuity and follow through, not just one answer in a chat. Those are the company’s intended capabilities; they should be validated on your own tasks.</p>
+<h3>How to try it</h3>
+<p>For terminal based coding, start with Muse Code and give it a small, reversible repository task: for example, add a missing test or document one module. State the target behavior, files or boundaries to preserve, and the checks to run. Review its plan and diff before accepting changes. Developers can also call Muse Wonder through Meta’s Model API or connect it to supported tools; Meta provides an OpenAI SDK compatible quick start. Muse Wonder Full is offered through eligible Muse Code subscriptions, while Wonder is available through the API and Muse Code. <a href="https://dev.meta.ai/models/muse-wonder">See current access and developer details</a>.</p>
+</div>
+<div class="why"><strong>Why this matters</strong>Long running agents shift the work from composing a perfect prompt to setting durable goals, permissions, checkpoints, and a clear definition of “finished.”</div>
+
+<div class="kicker">Practice for your next session</div>
+<h2>Use a three part agent handoff</h2>
+<p><strong>1. Outcome:</strong> describe the user visible behavior, not just the files to edit. <strong>2. Guardrails:</strong> name what must stay unchanged, and ask the agent to stop before destructive or external actions. <strong>3. Evidence:</strong> request the exact checks, a short diff summary, and any uncertainty. For a multi step task, have it propose a plan first; approve or narrow the plan before it fans out. Afterward, use a clean review pass focused on edge cases and the tests themselves.</p>
+<div class="why"><strong>Why this matters</strong>A repeatable handoff makes agent output easier to compare, review, and improve from one task to the next.</div>
+
+<section class="sources"><h2>Sources & further reading</h2><ol>
+<li><a href="https://about.fb.com/news/2026/10/introducing-muse-wonder-models/">Meta, “Introducing Muse Wonder and Muse Wonder Full,” October 12, 2026.</a></li>
+<li><a href="https://dev.meta.ai/models/muse-wonder">Meta developer page: Muse Wonder, Muse Code, Model API access and quick starts.</a></li>
+<li><a href="https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/">TechCrunch, independent report on Muse Wonder launch, October 12, 2026.</a></li>
+<li><a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ESEM.2026.67">Hamza, Siemon &amp; Awan, “Does Working with AI Agents Change How Developers Code, Test, and Review?”, ESEM 2026, published October 5.</a></li>
+<li><a href="https://fion.ac/jellyfish.pdf">Chen &amp; Stratton, “The Effects of Generative AI on Firm-Level Productivity,” working paper using Jellyfish engineering data, through March 2026.</a></li>
+</ol></section>
+<div class="footer"><span>All Things AI Dev Newsletter</span><span>Prepared October 12, 2026 &nbsp;·&nbsp; Claims linked to sources</span></div>
+on class="sources"><h2>Sources & further reading</h2><ol>
+<li><a href="https://arxiv.org/abs/2609.24234">Park et al., “The Work Behind Delegation: A Framework for Supervising AI Coding Agents,” arXiv, September 2026.</a></li>
+<li><a href="https://stackoverflow.co/company/press/archive/stack-overflow-annual-developer-survey-ai-trust-conditional">Stack Overflow, 2026 Developer Survey press summary, October 6, 2026.</a></li>
+<li><a href="https://survey.stackoverflow.co/2026/ai/data">Stack Overflow, 2026 survey AI results and data.</a></li>
+<li><a href="https://www.bitdefender.com/en-us/news/bitdefender-unveils-ai-guardian%2C-an-advanced-security-layer-developed-for-autonomous-ai-agents">Bitdefender, AI Guardian public beta announcement, September 30, 2026.</a></li>
+<li><a href="https://www.anthropic.com/claude-haiku-5-5">Anthropic, Claude Haiku 5.5 release, October 7, 2026.</a></li>
+<li><a href="https://mistral.ai/news/mistral-large-4/">Mistral, Large 4 preview and evaluation notes, October 6, 2026.</a></li>
+</ol></section>
+<div class="footer"><span>All Things AI Dev Newsletter</span><span>Prepared October 10, 2026 &nbsp;·&nbsp; Claims linked to original sources</span></div>
+</main><script>
+(() => {
+  const root = document.documentElement;
+  const button = document.getElementById("theme-toggle");
+  if (!button) return;
+  const key = "all-things-ai-dev-theme";
+  const sync = () => {
+    const dark = root.dataset.theme === "dark";
+    button.textContent = dark ? "Light mode" : "Dark mode";
+    button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    button.setAttribute("aria-pressed", String(dark));
+  };
+  sync();
+  button.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem(key, next); } catch {}
+    sync();
+  });
+})();
+</script>
+</body></html>
