@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Better boundaries for better agents · All Things AI Dev</title>
+<script>(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--page:#e9e6df;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow,.date{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(38px,7vw,64px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}h2{font:700 30px/1.15 Georgia,serif;margin:42px 0 10px}h3{font:700 21px/1.25 Arial,sans-serif;margin:30px 0 6px}p{color:#43515b;max-width:720px}.dek{font-size:21px;line-height:1.5}.back{display:inline-block;margin:20px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-decoration:none}.back:hover{text-decoration:underline}.why{border-left:4px solid var(--accent);padding:10px 16px;margin:14px 0 22px;background:#a33d250d}.why strong{font-family:Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}a{color:var(--blue);text-underline-offset:4px}li{margin:10px 0;color:#43515b}.spotlight{border:1px solid var(--line);padding:22px 24px;margin-top:18px}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--page:#101315;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}:root[data-theme="dark"] p,:root[data-theme="dark"] li{color:#d2d9dd}:root[data-theme="dark"] .why{background:#ef9d7e12}
+@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}.dek{font-size:19px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topbar"><div class="eyebrow">Tuesday, October 13, 2026 · Breakfast edition</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Better boundaries for better agents</h1>
+<p class="dek">The useful question is shifting from “Can the agent write this?” to “What is the safest, clearest job I can give it?” This morning’s releases point toward tighter control, better handoffs, and more deliberate practice.</p>
+
+<h2>What changed</h2>
+<h3>1. Treat agent access as part of the design</h3>
+<p>GitHub’s October 9 Copilot roundup makes local sandboxing generally available across Copilot CLI, the Copilot app, and VS Code sessions using Agent Host. It can limit an agent’s access to files, networks, and credentials. The same update adds local-model discovery in Copilot CLI through <code>/model</code>, using models available from a running Ollama instance.</p>
+<div class="why"><strong>Why this matters</strong><br>Permissions are not a postscript to an agent workflow. Start with the smallest filesystem, network, and credential surface that lets the task succeed, then expand only when a test demonstrates the need.</div>
+<p><a href="https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5/">GitHub’s release notes</a> · <a href="https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent">Copilot agent documentation</a></p>
+
+<h3>2. Make the handoff visible</h3>
+<p>GitHub’s VS Code releases for September added recurring automations, agent merge, pull-request creation from Copilot, Claude, or Codex sessions, and a more organized Agents window. The pattern is useful even if you use another tool: separate planning, implementation, review, and landing into observable stages, with a human checkpoint before merge.</p>
+<div class="why"><strong>Why this matters</strong><br>When an agent’s work is a session you can inspect—not a mysterious one-shot generation—you can compare approaches, recover from failure, and improve the instructions that produced the result.</div>
+<p><a href="https://github.blog/changelog/2026-10-01-github-copilot-in-vs-code-september-2026-releases/">Read the VS Code release notes</a>.</p>
+
+<h3>3. Put the project contract where every agent can see it</h3>
+<p>Independent practitioner Tim Deschryver reports strong results from a compact <code>AGENTS.md</code> (or tool-specific equivalent) containing the stack, commands, conventions, and recurring mistakes. He pairs that with skills and spec-driven development. The practical version: document how to run tests, what “done” means, which files are sensitive, and how to validate an architectural change.</p>
+<div class="why"><strong>Why this matters</strong><br>Every repeated correction is a missing rule. Turning corrections into durable project guidance makes the next agent session cheaper and more consistent.</div>
+<p><a href="https://timdeschryver.dev/blog/keep-agentic-ai-simple-a-practical-workflow-for-software-development">The workflow write-up</a> · <a href="https://agents.md/">AGENTS.md reference</a></p>
+
+<h3>4. Practice with a small, measurable loop</h3>
+<p>JetBrains’ 2026 developer survey says 90% of professional developers surveyed used AI coding agents at work at least weekly, and 68% used them daily. Those are adoption signals, not proof of quality. For improvement, choose one bounded task each week: write a short spec, ask an agent for a plan, let it implement behind a test boundary, review the diff, and record the failure mode you want to prevent next time.</p>
+<div class="why"><strong>Why this matters</strong><br>Agentic development is a skill built through feedback. A small loop gives you evidence about prompts, tools, models, and review habits instead of relying on vibes.</div>
+<p><a href="https://blog.jetbrains.com/research/2026/08/ai-coding-agent-adoption-2026/">See the survey and methodology</a>.</p>
+
+<h2>Tool spotlight: GitHub Copilot’s October 2026 agent controls</h2>
+<div class="spotlight">
+<p><strong>What it does.</strong> The October 9 update bundles three practical changes: generally available local sandboxing for agent sessions, local-model discovery in Copilot CLI via <code>/model</code>, and side-by-side agent sessions in VS Code 1.141. It also adds worktree cleanup so inactive sessions do not quietly consume disk.</p>
+<p><strong>Why it was built.</strong> Agents now operate across more accounts, environments, repositories, and models. GitHub’s stated focus is control over what agents can access and how their work is managed. That is a response to the operational problems that appear when “just let it code” becomes a team workflow: excess permissions, stranded worktrees, unclear session state, and model choice hidden from the developer.</p>
+<p><strong>How to use it.</strong></p>
+<ol><li>Update Copilot CLI or VS Code to a current release and start with a disposable branch or worktree.</li><li>Turn on local sandboxing and grant only the files, network access, and credentials the task needs.</li><li>In Copilot CLI, run <code>/model</code> and compare a local Ollama model with your configured cloud model on a small test task.</li><li>For larger work, run two narrow sessions—one for implementation and one for tests or review—then compare diffs before merging.</li><li>Clean up inactive worktrees after the task, and keep the successful prompt plus validation commands in the project instructions.</li></ol>
+</div>
+<p><a href="https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5/">Primary announcement</a> · <a href="https://code.visualstudio.com/updates/v1_141">VS Code 1.141 notes</a></p>
+
+<h2>One thing to try before lunch</h2>
+<p>Add a short “agent contract” to your next repository: goal, allowed files, commands, tests, and stop conditions. Give it to an agent with one issue that can be verified in under ten minutes. The quality of the contract—and the evidence in the diff—will tell you more than a generic productivity benchmark.</p>
+
+<footer>Sources checked October 13, 2026. Reporting links lead to original sources; independent analysis is labeled by publisher.</footer>
+</main>
+<script>(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";if(!b)return;const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem(k,n)}catch{}sync()})})();</script>
+</body></html>
