@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Faster models, smarter review · All Things AI Dev</title>
+<script>(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--page:#e9e6df;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(38px,7vw,64px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}h2{font:700 30px/1.15 Georgia,serif;margin:42px 0 10px}h3{font:700 21px/1.25 Arial,sans-serif;margin:30px 0 6px}p{color:#43515b;max-width:720px}.dek{font-size:21px;line-height:1.5}.back{display:inline-block;margin:20px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-decoration:none}.back:hover{text-decoration:underline}.why{border-left:4px solid var(--accent);padding:10px 16px;margin:14px 0 22px;background:#a33d250d}.why strong{font-family:Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}a{color:var(--blue);text-underline-offset:4px}li{margin:10px 0;color:#43515b}.spotlight{border:1px solid var(--line);padding:22px 24px;margin-top:18px}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}code{font-size:.92em;background:#62717b12;padding:.12em .3em;border-radius:3px}footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--page:#101315;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}:root[data-theme="dark"] p,:root[data-theme="dark"] li{color:#d2d9dd}:root[data-theme="dark"] .why{background:#ef9d7e12}
+@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}.dek{font-size:19px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topbar"><div class="eyebrow">Wednesday, October 14, 2026 · Breakfast edition</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Faster models, smarter review</h1>
+<p class="dek">Google’s new Gemini 4 Argon raises the ceiling for long-running coding work. The more important lesson for developers is lower down the stack: test models on your repository, measure the review they create, and make every delegation teach you something.</p>
+
+<h2>What matters this morning</h2>
+
+<h3>1. Gemini 4 Argon arrives for deep, multi-step work</h3>
+<p>Google released Gemini 4 Argon globally on October 13, positioning it for complex software engineering, cybersecurity, science, legal, and finance tasks. It is available through paid Gemini API access and Google Cloud; GitHub also made it generally available in Copilot for eligible plans, with a gradual rollout across IDEs, the CLI, coding agent, and Copilot app. Google’s performance claims are vendor-reported, so treat them as hypotheses for your codebase rather than universal rankings.</p>
+<div class="why"><strong>Why this matters</strong><br>A new frontier model is useful when it changes your task frontier—not merely when it wins a benchmark. Evaluate whether it can complete a representative migration, refactor, or investigation with fewer corrections and less review time.</div>
+<p><a href="https://deepmind.google/blog/introducing-gemini-4-argon/">Google DeepMind announcement</a> · <a href="https://github.blog/changelog/2026-10-13-gemini-4-argon-in-github-copilot/">GitHub Copilot availability</a> · <a href="https://www.reuters.com/business/google-launches-flagship-ai-model-gemini-4-argon-developers-businesses-2026-10-13/">Reuters coverage</a></p>
+
+<h3>2. Code generation is moving the bottleneck to review</h3>
+<p>Recent reporting on a Harvard study describes a familiar pattern: AI-assisted teams produced more code, commits, and pull requests, while review and merge time increased. The exact percentages belong to that study’s setting, but the operational signal is broadly useful. If agent output grows faster than review capacity, throughput can stall even while activity metrics rise.</p>
+<div class="why"><strong>Why this matters</strong><br>Measure lead time to a trusted merge, not lines generated. Smaller diffs, explicit acceptance tests, and a review budget are often more valuable than another parallel coding agent.</div>
+<p><a href="https://www.techradar.com/pro/ai-agents-are-great-at-writing-new-code-but-then-the-human-bottleneck-slows-everything-down">Independent report on the study</a>.</p>
+
+<h3>3. Protect against “knowledge debt”</h3>
+<p>A 2026 research paper argues that heavy agent delegation can quietly reduce incidental learning: developers receive working changes without building the understanding normally acquired while debugging and exploring. The authors call the resulting gap “knowledge debt.” A practical countermeasure is to ask the agent for a compact explanation of the invariant changed, the rejected alternatives, and the failure mode covered by each new test—then verify those claims in the diff.</p>
+<div class="why"><strong>Why this matters</strong><br>Code you can merge but cannot explain is a future incident waiting for an inconvenient moment. Review should transfer understanding, not only approve syntax.</div>
+<p><a href="https://arxiv.org/abs/2607.06101">“Agents That Teach” research paper</a>.</p>
+
+<h3>4. Turn model choice into a repeatable experiment</h3>
+<p>Model pickers now make switching easy, but ad hoc switching produces anecdotes. Build a tiny evaluation set from five real tasks: one bug fix, one test addition, one refactor, one documentation correction, and one repository investigation. Run each model with the same context and score four things: task success, review minutes, unnecessary churn, and test quality. Keep the prompts and results in the repository so the next evaluation is comparable.</p>
+<div class="why"><strong>Why this matters</strong><br>The “best” model depends on your languages, architecture, test harness, and risk tolerance. A local scorecard turns release-day excitement into an engineering decision.</div>
+<p><a href="https://deepmind.google/models/model-cards/gemini-4-argon/">Gemini 4 Argon model card</a> · <a href="https://deepmind.google/models/evals-methodology/gemini-4-argon">Google’s evaluation methodology</a></p>
+
+<h2>Tool spotlight: Gemini 4 Argon</h2>
+<div class="spotlight">
+<p><strong>What it does.</strong> Argon is Google’s new frontier reasoning model for long-horizon, multimodal work. For developers, the relevant targets are large-codebase refactoring, complex debugging, agentic tool use, and cybersecurity analysis. It is available in the paid Gemini API and Google Cloud, with integrations in Google Antigravity and GitHub Copilot.</p>
+<p><strong>Why it was built.</strong> Google says Argon was designed to sustain reasoning across difficult, real-world workflows rather than only answer isolated prompts. That makes it a candidate for jobs with dependencies and verification steps: migrations, cross-file changes, technical investigations, and security remediation.</p>
+<p><strong>How to use it well.</strong></p>
+<ol>
+<li>Choose one bounded repository task with an objective pass/fail test.</li>
+<li>Give the model the goal, relevant architecture notes, allowed files, commands, and stop conditions.</li>
+<li>Require a plan before edits and a final report listing tests run, unresolved risks, and assumptions.</li>
+<li>Compare its output with your current model using the same task and context.</li>
+<li>Record task success, review time, diff size, and defects found after the agent finished.</li>
+</ol>
+<p>In GitHub Copilot, eligible users can select Argon from the model picker in supported IDEs, Copilot CLI, coding agent, or the Copilot app. In the Gemini API, begin with the paid tier and pin the model identifier in evaluation code so future comparisons remain reproducible.</p>
+</div>
+<p><a href="https://aistudio.google.com/learn/gemini-4-argon-developer-guide">Developer guide</a> · <a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud">Google Cloud availability</a> · <a href="https://antigravity.google/blog/gemini-4-argon-in-google-antigravity/">Antigravity integration</a></p>
+
+<h2>One thing to try before lunch</h2>
+<p>Take a recently merged bug fix and hide the final diff. Ask two models to solve it from the original issue, using the same repository instructions. Time how long you spend reviewing each result. The winner is not the model that writes more—it is the one that reaches a trustworthy merge with less human uncertainty.</p>
+
+<footer>Sources checked October 14, 2026. Product claims are attributed to their publishers; independent reporting and research are linked alongside primary sources.</footer>
+</main>
+<script>(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";if(!b)return;const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem(k,n)}catch{}sync()})})();</script>
+</body></html>
