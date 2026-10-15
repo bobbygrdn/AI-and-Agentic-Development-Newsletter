@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Scale the workflow, contain the blast radius · All Things AI Dev</title>
+<meta name="description" content="Claude dynamic workflows, agent safety boundaries, prompt-injection resilience, and reproducible GitHub Actions dependencies.">
+<script>(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--page:#e9e6df;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(38px,7vw,64px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}h2{font:700 30px/1.15 Georgia,serif;margin:42px 0 10px}h3{font:700 21px/1.25 Arial,sans-serif;margin:30px 0 6px}p{color:#43515b;max-width:720px}.dek{font-size:21px;line-height:1.5}.back{display:inline-block;margin:20px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-decoration:none}.back:hover{text-decoration:underline}.why{border-left:4px solid var(--accent);padding:10px 16px;margin:14px 0 22px;background:#a33d250d}.why strong{font-family:Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}a{color:var(--blue);text-underline-offset:4px}li{margin:10px 0;color:#43515b}.spotlight{border:1px solid var(--line);padding:22px 24px;margin-top:18px}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}code{font-size:.92em;background:#62717b12;padding:.12em .3em;border-radius:3px}footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--page:#101315;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}:root[data-theme="dark"] p,:root[data-theme="dark"] li{color:#d2d9dd}:root[data-theme="dark"] .why{background:#ef9d7e12}
+@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}.dek{font-size:19px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topbar"><div class="eyebrow">Thursday, October 15, 2026 · Breakfast edition</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Scale the workflow, contain the blast radius</h1>
+<p class="dek">Claude can now write programs that orchestrate large fleets of agents. That is an impressive step up in leverage—and a reminder that budgets, permissions, provenance, and failure handling are part of the product, not cleanup work.</p>
+
+<h2>What matters this morning</h2>
+
+<h3>1. Multi-agent orchestration becomes programmable</h3>
+<p>Anthropic’s Claude Managed Agents now supports dynamic workflows in beta. A lead agent can write a workflow program, split work into phases, run agents in parallel, pass results between them, repeat steps, and handle failures while the server executes the run in the background. Anthropic documents ceilings of up to 1,000 agents over a run’s lifetime and 64 working threads at once, though limits may change.</p>
+<div class="why"><strong>Why this matters</strong><br>Parallelism is valuable when tasks are truly independent. Before fanning out, define the merge strategy, evidence format, retry limit, and the condition that stops further work.</div>
+<p><a href="https://platform.claude.com/docs/en/managed-agents/workflow-runs">Anthropic workflow-run documentation</a> · <a href="https://mixed-news.com/en/claude-managed-agents-dynamic-workflows-1000-agents-permission-policies/">Independent analysis of limits and controls</a></p>
+
+<h3>2. Agent safety is becoming an accountability question</h3>
+<p>Reuters reported on October 15 that the U.S. FTC sent civil subpoenas to OpenAI and Anthropic seeking information about safety incidents, safeguards, marketing, and privacy practices. Separately, ByteDance’s Seed unit announced an Alignment &amp; Preparedness team focused on safety training, automated vulnerability testing, behavior monitoring, agent test environments, and independent evaluation.</p>
+<div class="why"><strong>Why this matters</strong><br>Teams shipping agents should assume they may eventually need to explain what an agent could access, what it actually did, which guardrails fired, and who approved consequential actions.</div>
+<p><a href="https://www.reuters.com/business/us-ftc-subpoenas-openai-anthropic-over-consumer-harms-axios-reports-2026-10-15/">Reuters on the FTC inquiry</a> · <a href="https://www.reuters.com/business/media-telecom/chinas-bytedance-sets-up-ai-safety-team-launches-global-hiring-drive-2026-10-15/">Reuters on ByteDance’s safety team</a></p>
+
+<h3>3. Design for prompt injection to sometimes succeed</h3>
+<p>A 2026 paper argues that contextual manipulation can defeat defenses based only on separating data from instructions. The practical conclusion is not to abandon detection; it is to make successful manipulation less consequential. Give agents narrow tools, isolate sensitive data, require approval for irreversible actions, and validate outputs outside the model’s own reasoning loop.</p>
+<div class="why"><strong>Why this matters</strong><br>A perfect detector is not a dependable security boundary. Limit the agent’s authority so one malicious document, webpage, or tool response cannot become a system-wide incident.</div>
+<p><a href="https://arxiv.org/abs/2605.17634">“AI Agents May Always Fall for Prompt Injections”</a> · <a href="https://openai.com/index/designing-agents-to-resist-prompt-injection/">OpenAI’s defense-in-depth approach</a></p>
+
+<h3>4. Make agent-written CI reproducible</h3>
+<p>GitHub released Actions workflow dependency lockfiles in public preview on October 14. A lockfile records exact commits for actions, transitive dependencies, and reusable workflows, so reviewed code remains the code that runs even if a tag or branch later moves. GitHub cautions that locking does not prove a dependency is safe; it preserves the reviewed version.</p>
+<div class="why"><strong>Why this matters</strong><br>When agents create or edit CI workflows, a readable lockfile gives reviewers a stable dependency diff and reduces the chance that a moving tag changes behavior after approval.</div>
+<p><a href="https://github.blog/changelog/2026-10-14-github-actions-workflow-lockfiles-in-public-preview/">GitHub announcement and setup</a> · <a href="https://github.com/github/actions-lockfile">Lockfile format and parser</a></p>
+
+<h2>Tool spotlight: Claude Managed Agents dynamic workflows</h2>
+<div class="spotlight">
+<p><strong>What it does.</strong> Dynamic workflows let a Claude Managed Agent write and launch a program that coordinates many agent threads. The program can fan work out, sequence phases, share files in the session sandbox, aggregate results, retry failed work, and continue in the background.</p>
+<p><strong>Why it was built.</strong> A single conversational loop is a poor fit for work containing hundreds of similar inputs or several distinct phases. Anthropic uses document review as an example: independent readers can process batches, a synthesis phase can reconcile findings, and a final phase can produce one result.</p>
+<p><strong>How to use it safely.</strong></p>
+<ol>
+<li>Enable workflows explicitly in the agent’s <code>multiagent</code> configuration and start with a low session budget.</li>
+<li>Describe when a workflow is appropriate—and when ordinary single-agent work is preferred—in the system prompt.</li>
+<li>Require every worker to return the same small schema: finding, evidence, confidence, and unresolved question.</li>
+<li>Give worker agents read-only tools by default; reserve writes and external actions for a final, separately approved phase.</li>
+<li>Set maximum rounds and a failure policy. Do not let “try again” become an unbounded token loop.</li>
+<li>Observe the event stream and sample worker threads before trusting the aggregate.</li>
+</ol>
+<p>A good first experiment is repository reconnaissance: assign separate read-only agents to architecture, tests, dependencies, security-sensitive surfaces, and recent churn, then have one synthesis agent produce a cited map. Keep implementation out of the first run so you can evaluate orchestration quality without risking edits.</p>
+</div>
+<p><a href="https://platform.claude.com/docs/en/managed-agents/workflow-runs">Workflow runs</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes</a></p>
+
+<h2>One thing to try before lunch</h2>
+<p>Write a four-line “fan-out contract” for your next multi-agent task: maximum workers, maximum rounds, evidence format, and stop condition. If you cannot state all four, the task is not ready to scale.</p>
+
+<footer>Sources checked October 15, 2026. Product capabilities and limits are attributed to vendor documentation; independent reporting and research are linked alongside primary sources.</footer>
+</main>
+<script>(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";if(!b)return;const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem(k,n)}catch{}sync()})})();</script>
+</body></html>
