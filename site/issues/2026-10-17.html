@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Keep the agent interruptible · All Things AI Dev</title>
+<meta name="description" content="A practical weekly recap on steering agents early, forecasting failures, protecting review capacity, and Codex CLI 0.163.">
+<script>(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--page:#e9e6df;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(38px,7vw,64px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}h2{font:700 30px/1.15 Georgia,serif;margin:42px 0 10px}h3{font:700 21px/1.25 Arial,sans-serif;margin:30px 0 6px}p{color:#43515b;max-width:720px}.dek{font-size:21px;line-height:1.5}.back{display:inline-block;margin:20px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-decoration:none}.back:hover{text-decoration:underline}.why{border-left:4px solid var(--accent);padding:10px 16px;margin:14px 0 22px;background:#a33d250d}.why strong{font-family:Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}a{color:var(--blue);text-underline-offset:4px}li{margin:10px 0;color:#43515b}.spotlight{border:1px solid var(--line);padding:22px 24px;margin-top:18px}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}code{font-size:.92em;background:#62717b12;padding:.12em .3em;border-radius:3px}footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--page:#101315;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}:root[data-theme="dark"] p,:root[data-theme="dark"] li{color:#d2d9dd}:root[data-theme="dark"] .why{background:#ef9d7e12}
+@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}.dek{font-size:19px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topbar"><div class="eyebrow">Saturday, October 17, 2026 · Weekly recap</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Keep the agent interruptible</h1>
+<p class="dek">The week’s most useful lesson is not “make the agent more autonomous.” It is to shorten the distance between action, evidence, and correction. Steer while work is moving, predict failures before expensive runs, and treat review capacity as a hard engineering budget.</p>
+
+<h2>The week in one control loop</h2>
+
+<h3>1. Course-correct before the turn is over</h3>
+<p>OpenAI’s stable Codex CLI 0.163 release, published October 15, lets a developer send a follow-up while Codex is responding. A new instruction can steer the running turn immediately; interrupting also stops active Code Mode cells and nested tool calls. The same release adds searchable in-session configuration and parallel execution for independent read-only lookups.</p>
+<div class="why"><strong>Why this matters</strong><br>Long agent runs should not turn a mistaken assumption into sunk cost: make checkpoints visible and correct direction as soon as new evidence appears.</div>
+<p><a href="https://github.com/openai/codex/releases/tag/rust-v0.163.0">OpenAI release notes, October 15</a> · <a href="https://codex.danielvaughan.com/2026/10/16/codex-v0163-stable-release-config-follow-up-parallel-tools-daybreak/">Independent practical overview, updated October 17</a></p>
+
+<h3>2. Predict the failure mode, not only the score</h3>
+<p>A newly revised preprint from researchers at the University of Virginia, Microsoft Research, and Tsinghua adds an Improvement Dynamics Model to a self-modifying agent. Before an expensive evaluation, the model predicts task-level outcomes—including the difference between a wrong answer and a run that never finishes—and can give the modifying agent one more revision. The authors report gains across coding, paper review, robot-reward design, and math grading, including under matched token budgets.</p>
+<div class="why"><strong>Why this matters</strong><br>Before an agent changes its own prompt, tools, or code, ask it to forecast concrete regressions and name the evidence that would falsify the change.</div>
+<p><a href="https://arxiv.org/abs/2610.13991">Primary paper, revised October 15</a> · <a href="https://techxplore.com/news/2026-10-ai-agents-errors-software.html">Tech Xplore explanation, October 16</a></p>
+
+<h3>3. Optimize the queue after generation</h3>
+<p>A Harvard study covering 300 million work events across 718 firms found that agent adoption raised lines of code by 30%, commits by 20%, and pull requests by 23%, but did not produce a statistically significant increase in resolved Jira issues or epics. Review time rose 49%; change requests nearly doubled; comments per pull request rose 35%. The authors describe review as the bottleneck that absorbs much of the coding-speed gain.</p>
+<div class="why"><strong>Why this matters</strong><br>Agent throughput is useful only when verified work ships; cap pull-request size, require task-specific tests, and budget reviewer time before increasing parallelism.</div>
+<p><a href="https://fion.ac/jellyfish.pdf">Primary study, August 4 version</a> · <a href="https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software/">Ars Technica analysis, October 9</a></p>
+
+<h3>4. Make every handoff evidence-shaped</h3>
+<p>Taken together, the releases and research point to a practical agent contract: state the goal and boundaries; require a plan; make assumptions interruptible; run cheap checks before broad tests; and return a compact evidence bundle—diff summary, tests run, failures, risks, and unresolved questions. Reviewers should not have to reconstruct the agent’s path from a large patch.</p>
+<div class="why"><strong>Why this matters</strong><br>A small, structured evidence bundle converts agent output from “code to inspect” into “claims to verify,” reducing both review latency and missed defects.</div>
+
+<h2>Tool spotlight: Codex CLI 0.163</h2>
+<div class="spotlight">
+<p><strong>What it does.</strong> Codex CLI is a terminal coding agent that can inspect a repository, edit files, run tools, and collaborate through a threaded interface. Version 0.163 adds mid-response follow-ups, a searchable <code>/config</code> panel, a configurable leader key through <code>/keymap</code>, restart controls for its managed background server, and parallel independent read-only lookups.</p>
+<p><strong>Why it was built.</strong> Long-running coding work needs a control surface, not just a better first prompt. This update reduces the cost of changing direction, exposes settings without manual configuration-file editing, and speeds safe context gathering while keeping mutating work ordered.</p>
+<p><strong>How to use it.</strong></p>
+<ol>
+<li>Install or update the CLI using the supported package for your environment, then confirm the version reports <code>0.163.0</code>.</li>
+<li>Open a small repository task and ask Codex to state its plan, assumptions, and validation commands before editing.</li>
+<li>While it works, send a follow-up as soon as an assumption changes—for example: “Keep the public API unchanged; add a regression test first.” Do not wait for the full turn.</li>
+<li>Use <code>/config</code> to review permissions and preferences in-session. Treat restart-required settings as a deliberate checkpoint.</li>
+<li>Let read-only discovery run in parallel, but keep writes narrow: one coherent change, a small diff, and explicit tests.</li>
+<li>End with an evidence bundle: files changed, commands run, test results, risks, and the next human decision.</li>
+</ol>
+<p>Try it on a bug with one reproducible failure. Give the agent the failing command, interrupt once with a newly discovered constraint, and compare the final review effort with a run where correction waits until the end.</p>
+</div>
+<p><a href="https://github.com/openai/codex/releases/tag/rust-v0.163.0">Official 0.163 release</a> · <a href="https://changelogs.directory/tools/codex/releases/0.163.0">Independent changelog summary</a></p>
+
+<h2>One thing to try this weekend</h2>
+<p>For one agent task, write four lines before you start: <strong>goal</strong>, <strong>non-negotiable constraint</strong>, <strong>cheapest falsifying check</strong>, and <strong>review budget</strong>. Interrupt the run when any line changes. That tiny loop is more valuable than another page of prompt instructions.</p>
+
+<footer>Sources checked October 17, 2026. Product capabilities are attributed to official release notes and cross-checked with independent summaries; research findings are linked to primary papers and independent reporting.</footer>
+</main>
+<script>(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";if(!b)return;const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem(k,n)}catch{}sync()})})();</script>
+</body></html>
