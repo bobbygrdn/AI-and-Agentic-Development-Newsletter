@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Design agents for evidence, not just autonomy · All Things AI Dev</title>
+<meta name="description" content="A practical Saturday recap on Gemini 4 Argon, agentic development controls, autonomous intrusion risk, and evidence-shaped engineering workflows.">
+<script>(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--page:#e9e6df;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(38px,7vw,64px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}h2{font:700 30px/1.15 Georgia,serif;margin:42px 0 10px}h3{font:700 21px/1.25 Arial,sans-serif;margin:30px 0 6px}p{color:#43515b;max-width:720px}.dek{font-size:21px;line-height:1.5}.back{display:inline-block;margin:20px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-decoration:none}.back:hover{text-decoration:underline}.why{border-left:4px solid var(--accent);padding:10px 16px;margin:14px 0 22px;background:#a33d250d}.why strong{font-family:Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}a{color:var(--blue);text-underline-offset:4px}li{margin:10px 0;color:#43515b}.spotlight{border:1px solid var(--line);padding:22px 24px;margin-top:18px}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}code{font-size:.92em;background:#62717b12;padding:.12em .3em;border-radius:3px}footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--page:#101315;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}:root[data-theme="dark"] p,:root[data-theme="dark"] li{color:#d2d9dd}:root[data-theme="dark"] .why{background:#ef9d7e12}
+@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}.dek{font-size:19px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topbar"><div class="eyebrow">Saturday, October 17, 2026 · Weekly recap</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Design agents for evidence, not just autonomy</h1>
+<p class="dek">This week’s releases and warnings point to the same engineering principle: capable agents are useful only when their actions are bounded, inspectable, and easy to correct. The practical edge is moving from “can the model do it?” to “can the team verify what it did?”</p>
+
+<h2>The week in practical AI development</h2>
+
+<h3>1. Gemini 4 Argon makes long-horizon work a first-class API workload</h3>
+<p>Google announced Gemini 4 Argon on October 13 as a flagship reasoning model for complex software engineering, scientific and mathematical problem solving, and multi-step agents. Its developer documentation lists a shared 1,048,576-token input/output limit, long decode, function calling, code execution, file search, search grounding, structured outputs, and computer use in preview. Reuters reports that Google is positioning it for coding and other complex professional workflows, with API pricing starting at $2 per million input tokens and $10 per million output tokens before the November 30 pricing change.</p>
+<div class="why"><strong>Why this matters</strong><br>Long context and tool use reduce orchestration friction, but they also increase the cost of a bad assumption. Make checkpoints, budgets, and stop conditions part of the application—not an afterthought in the prompt.</div>
+<p><a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/">Google announcement, October 13</a> · <a href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon">Google model documentation</a> · <a href="https://www.reuters.com/business/google-launches-flagship-ai-model-gemini-4-argon-developers-businesses-2026-10-13/">Reuters coverage</a></p>
+
+<h3>2. Agentic development is becoming a lifecycle, not a feature</h3>
+<p>An independent analysis published this week describes an “Agent Development LifeCycle” built around role definition, tool access, onboarding, stress testing, deployment, monitoring, and ongoing supervision. The useful insight is less the label than the operating model: an agent has permissions, failure modes, and drift, so shipping it resembles operating a junior service or teammate more than adding a deterministic library call.</p>
+<div class="why"><strong>Why this matters</strong><br>Write an agent contract before implementation: purpose, allowed tools, data boundaries, escalation rules, evaluation set, and the human who owns the final decision.</div>
+<p><a href="https://www.techradar.com/pro/agentic-ai-is-breaking-the-traditional-software-development-rules">TechRadar Pro analysis, October 14</a> · <a href="https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents">Anthropic’s framework for safe agents</a></p>
+
+<h3>3. Autonomous attackers are exploiting ordinary configuration mistakes faster</h3>
+<p>India’s CERT-In issued an October 15 advisory warning that AI-driven intrusions are using familiar weaknesses—exposed credentials, permissive cloud roles, and forgotten test APIs—with greater speed and persistence. The advisory’s defensive recommendations are straightforward: secret scanning, least privilege, multifactor authentication, network restrictions, synthetic data for testing, and monitoring designed for machine-speed activity.</p>
+<div class="why"><strong>Why this matters</strong><br>Agent security starts with boring hygiene. Remove secrets from reachable workspaces, default tools to read-only access, and test whether an agent can cross a boundary before trusting it with production data.</div>
+<p><a href="https://www.expresscomputer.in/artificial-intelligence-ai/cert-in-warns-of-autonomous-intrusions-and-the-weaknesses-are-the-oldest-ones-in-the-book/140080/">Independent report on the CERT-In advisory, October 17</a> · <a href="https://www.anthropic.com/engineering/claude-code-sandboxing">Anthropic’s sandboxing design notes</a></p>
+
+<h3>4. More generated code still creates a verification queue</h3>
+<p>Recent industry evidence continues to show the same operational tradeoff: coding agents can increase output while shifting work into review, change requests, integration, and incident prevention. That means the right unit of optimization is not lines generated; it is verified change delivered per unit of reviewer and compute capacity.</p>
+<div class="why"><strong>Why this matters</strong><br>Measure cycle time, escaped defects, review load, and rollback rate alongside agent throughput. If review is the bottleneck, parallelizing more agents can make delivery slower.</div>
+<p><a href="https://blog.jetbrains.com/research/2026/08/ai-coding-agent-adoption-2026/">JetBrains research on coding-agent adoption</a> · <a href="https://www.anthropic.com/research/claude-code-expertise">Anthropic research on real Claude Code usage</a></p>
+
+<h2>Tool spotlight: Gemini 4 Argon</h2>
+<div class="spotlight">
+<p><strong>What it does.</strong> Gemini 4 Argon is Google’s flagship reasoning model for complex, multi-step work. Through the Gemini API, it can combine text, image, video, audio, and PDF inputs with function calling, code execution, file search, structured outputs, search grounding, and long-context reasoning. Computer use is available as a preview capability.</p>
+<p><strong>Why it was built.</strong> Google’s release frames Argon around workflows that are too involved for a single short answer: repository-scale software tasks, research, scientific reasoning, enterprise knowledge work, and cybersecurity defense. The shared long context and tool surface are intended to keep more of the task state in one agent loop.</p>
+<p><strong>How to use it.</strong></p>
+<ol>
+<li>Create a paid Gemini API key in <a href="https://aistudio.google.com/">Google AI Studio</a> and review the <a href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon">model limits and capabilities</a>.</li>
+<li>Start with <code>gemini-4-argon</code> through the current Gemini API or the <a href="https://ai.google.dev/gemini-api/docs/interactions-overview">Interactions API</a>; begin with a read-only repository or synthetic dataset.</li>
+<li>Use structured outputs for plans, tool arguments, test results, and risk reports. Keep mutating tools behind explicit application-side authorization.</li>
+<li>Give the agent a bounded objective, a maximum tool-call or token budget, and a cheap stop condition such as “stop after the first failing test and return evidence.”</li>
+<li>Evaluate on a small task set before enabling long decodes or computer use. Record both success and unsafe or unnecessary actions.</li>
+</ol>
+<p>A good first experiment is a repository maintenance task with a fixed test suite: ask Argon to propose a change, inspect the plan, allow only read-only discovery, and then compare the resulting evidence bundle with the time spent reviewing it.</p>
+</div>
+<p><a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/">Official release</a> · <a href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon">Official API reference</a> · <a href="https://www.reuters.com/business/google-launches-flagship-ai-model-gemini-4-argon-developers-businesses-2026-10-13/">Independent reporting</a></p>
+
+<h2>One practice to take into next week</h2>
+<p>For every agent task, require five outputs: the plan, assumptions, tool calls, validation results, and unresolved risks. Keep the interface keyboard-accessible and the control visible. The goal is not to remove human judgment; it is to make the judgment fast, specific, and based on evidence.</p>
+
+<footer>Sources checked October 17, 2026. Product claims are linked to official documentation and cross-checked with independent reporting; operational guidance is clearly presented as synthesis.</footer>
+</main>
+<script>(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";if(!b)return;const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem(k,n)}catch{}sync()})})();</script>
+</body></html>
