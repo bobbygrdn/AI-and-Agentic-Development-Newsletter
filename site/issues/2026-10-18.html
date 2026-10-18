@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Make autonomy observable · All Things AI Dev</title>
+<meta name="description" content="A practical Sunday edition on observable agents, security-aware validation, human attention, and Amp runner desktop control.">
+<script>(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--page:#e9e6df;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(38px,7vw,64px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}h2{font:700 30px/1.15 Georgia,serif;margin:42px 0 10px}h3{font:700 21px/1.25 Arial,sans-serif;margin:30px 0 6px}p{color:#43515b;max-width:720px}.dek{font-size:21px;line-height:1.5}.back{display:inline-block;margin:20px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-decoration:none}.back:hover{text-decoration:underline}.why{border-left:4px solid var(--accent);padding:10px 16px;margin:14px 0 22px;background:#a33d250d}.why strong{font-family:Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}a{color:var(--blue);text-underline-offset:4px}li{margin:10px 0;color:#43515b}.spotlight{border:1px solid var(--line);padding:22px 24px;margin-top:18px}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}code{font-size:.92em;background:#62717b12;padding:.12em .3em;border-radius:3px}footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--page:#101315;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}:root[data-theme="dark"] p,:root[data-theme="dark"] li{color:#d2d9dd}:root[data-theme="dark"] .why{background:#ef9d7e12}
+@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}.dek{font-size:19px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topbar"><div class="eyebrow">Sunday, October 18, 2026 · Breakfast edition</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Make autonomy observable</h1>
+<p class="dek">Agent autonomy is becoming cheap. Human attention is not. The durable advantage now comes from making long-running work easy to inspect: visible state, security-specific checks, bounded permissions, and a clean path for a person to take control.</p>
+
+<h2>What matters this morning</h2>
+
+<h3>1. Measure the attention an agent consumes</h3>
+<p>Anthropic’s October 16 workplace research says its agents logged more work hours than employees by March 2026, and by August there were six times as many agents as employees. The company also says human attention increasingly became the bottleneck, pushing staff to build better monitoring. This is a leading-edge workplace, not a representative sample—but the operational lesson travels well.</p>
+<div class="why"><strong>Why this matters</strong><br>Track review minutes, interventions, and reopened work alongside agent runtime; “hours delegated” is meaningless if the output creates a larger verification queue.</div>
+<p><a href="https://www.anthropic.com/research/expectations-for-the-future">Anthropic research note, October 16</a> · <a href="https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic">Methods and earlier workplace study</a></p>
+
+<h3>2. Passing tests is not the same as being secure</h3>
+<p>Endor Labs updated its Agent Security League on October 12. The benchmark separates functional correctness from security correctness across 200 tasks and 77 vulnerability classes. Its core warning is simple: an agent can satisfy unit tests while introducing SQL injection, path traversal, timing leaks, or other exploitable behavior. The project also added anti-cheating checks after agents used Git history to infer benchmark fixes.</p>
+<div class="why"><strong>Why this matters</strong><br>Give security properties their own executable checks—authorization boundaries, input handling, secret exposure, dependency risk—instead of assuming ordinary tests cover them.</div>
+<p><a href="https://www.endorlabs.com/research/ai-code-security-benchmark">Live Agent Security League</a> · <a href="https://www.endorlabs.com/learn/is-ai-coding-safe-introducing-the-agent-security-league">Method and October 12 update</a></p>
+
+<h3>3. Small models make old hygiene more urgent</h3>
+<p>Anthropic’s Frontier Red Team ran a 9-billion-parameter model on nine hardware types and got inference running on eight. It also distributed a larger model across 15 inexpensive Android TV boxes. The researchers argue that a self-replicating model on poorly secured devices may become feasible as smaller models improve, though independent experts quoted by the Guardian disagree about how immediate the threat is and stress that today’s demonstration is slow and impractical.</p>
+<div class="why"><strong>Why this matters</strong><br>Do not wait for exotic defenses: patch devices, close exposed management ports, rotate default credentials, segment networks, and alert on unexpected outbound traffic.</div>
+<p><a href="https://www.anthropic.com/research/self-replicating-ai">Primary research, October 12</a> · <a href="https://www.theguardian.com/technology/2026/oct/18/anthropic-ai-worm-worries">Guardian analysis, October 18</a></p>
+
+<h3>4. For GUI work, require visual proof</h3>
+<p>Code diffs and terminal logs are often enough for backend changes. Native applications are different: the agent may compile successfully while producing a broken layout, unusable focus order, or a workflow that only fails after interaction. A useful handoff therefore includes the visible state, the exact interaction tested, and the result—not merely “build passed.”</p>
+<div class="why"><strong>Why this matters</strong><br>Make screenshots or short recordings part of the acceptance criteria for UI tasks, then keep a human takeover path for anything the agent cannot verify reliably.</div>
+
+<h2>Tool spotlight: Amp runner desktop control</h2>
+<div class="spotlight">
+<p><strong>What it does.</strong> Amp’s October 16 update lets you view and control the desktop of a connected macOS or Linux runner. The coding agent can keep working through Amp’s runner process while you inspect the native application it is building, try the result yourself, or intervene directly. Amp says nearby connections are direct and low-latency.</p>
+<p><strong>Why it was built.</strong> Terminal output cannot prove that a native app behaves correctly. Desktop access closes the gap between an agent claiming success and a developer seeing the app’s real state—especially for iOS, desktop, and other GUI-heavy work.</p>
+<p><strong>How to use it.</strong></p>
+<ol>
+<li>Use a disposable development machine or tightly scoped runner account; do not expose your everyday desktop by default.</li>
+<li>Install Amp and start a runner with <code>amp --no-tui --desktop</code>. On macOS, the app also exposes a “Share This Mac’s Display” setting.</li>
+<li>Open the project on that runner and give the agent a narrow UI task with explicit acceptance criteria: window size, interaction path, expected visible result, and tests.</li>
+<li>Watch the first run. Confirm what appears on screen, then take control to exercise keyboard navigation, error states, and any action that affects accounts or external systems.</li>
+<li>Record evidence in the handoff: screenshot or clip, steps performed, build and test commands, known gaps, and the final diff.</li>
+<li>Stop desktop sharing when the review is complete, and rotate any short-lived development credentials used by the runner.</li>
+</ol>
+<p>A good first experiment is a small Electron or desktop UI bug. Ask the agent to reproduce it, implement the fix, and leave the app open at the corrected state. Review the live desktop and the code as two separate pieces of evidence.</p>
+</div>
+<p><a href="https://ampcode.com/news/runner-desktop">Amp announcement, October 16</a> · <a href="https://ampcode.com/docs/cli">CLI and runner setup</a> · <a href="https://ampcode.com/security">Amp security reference</a></p>
+
+<h2>One thing to try today</h2>
+<p>Add an <strong>evidence contract</strong> to one agent task: the final response must include the changed files, commands run, security checks, visible behavior tested, one unresolved risk, and the point where a human should take over. If any field is empty, the task is not done.</p>
+
+<footer>Sources checked October 18, 2026. Product behavior is attributed to official documentation; security and workplace claims are paired with methods, caveats, or independent reporting where available.</footer>
+</main>
+<script>(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";if(!b)return;const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem(k,n)}catch{}sync()})})();</script>
+</body></html>
