@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>A finding is not a gate · All Things AI Dev</title>
+<meta name="description" content="Autonomous attack economics, security gates, model-deprecation drills, and GitHub AI Scan for pull requests.">
+<script>(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--page:#e9e6df;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(38px,7vw,64px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}h2{font:700 30px/1.15 Georgia,serif;margin:42px 0 10px}h3{font:700 21px/1.25 Arial,sans-serif;margin:30px 0 6px}p{color:#43515b;max-width:720px}.dek{font-size:21px;line-height:1.5}.back{display:inline-block;margin:20px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-decoration:none}.back:hover{text-decoration:underline}.why{border-left:4px solid var(--accent);padding:10px 16px;margin:14px 0 22px;background:#a33d250d}.why strong{font-family:Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}a{color:var(--blue);text-underline-offset:4px}li{margin:10px 0;color:#43515b}.spotlight{border:1px solid var(--line);padding:22px 24px;margin-top:18px}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}code{font-size:.92em;background:#62717b12;padding:.12em .3em;border-radius:3px}footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--page:#101315;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}:root[data-theme="dark"] p,:root[data-theme="dark"] li{color:#d2d9dd}:root[data-theme="dark"] .why{background:#ef9d7e12}
+@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}.dek{font-size:19px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topbar"><div class="eyebrow">Monday, October 19, 2026 · Breakfast edition</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>A finding is not a gate</h1>
+<p class="dek">AI can now find vulnerabilities, propose fixes, and exploit weak systems at machine tempo. The engineering advantage is no longer another stream of findings. It is a workflow that decides which signals block delivery, who resolves them, and how quickly the system learns.</p>
+
+<h2>What matters this morning</h2>
+
+<h3>1. Autonomous attacks changed the cost curve</h3>
+<p>Reuters reports that a hacker used AI agents to probe more than 1,200 websites and compromise more than 100. NorForge researcher Snorre Fagerland estimated roughly $5,000 in model tokens for the campaign—about $50 per successful intrusion—with successful attacks often running for about 23 hours. Reuters independently identified several affected companies; it could not determine how much data was extracted.</p>
+<div class="why"><strong>Why this matters</strong><br>Attackers can parallelize patience, so defenders need automatic containment and escalation—not a human expected to notice every slow probe.</div>
+<p><a href="https://www.reuters.com/legal/government/how-one-hacker-used-ai-agents-few-thousand-dollars-break-into-scores-sites-2026-10-19/">Reuters investigation, October 19</a> · <a href="https://norforge.com/blog">NorForge research index</a></p>
+
+<h3>2. Treat agent-accessible control surfaces as public</h3>
+<p>NorForge says it found more than 20 exposed Cairn control panels that revealed how threat actors selected targets and directed multi-agent intrusion work. The immediate lesson is familiar: management interfaces, debug endpoints, logs, task queues, and credentials become part of the attack surface when an agent can discover and operate them.</p>
+<div class="why"><strong>Why this matters</strong><br>Inventory every agent dashboard and runner endpoint, require authentication, restrict network reach, and keep secrets out of logs—the model will exploit ordinary exposure at extraordinary scale.</div>
+<p><a href="https://norforge.com/blog">NorForge: “Inside Cairn”</a> · <a href="https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins">The Verge summary, October 19</a></p>
+
+<h3>3. Security signals need an owner and a deadline</h3>
+<p>GitHub made AI Scan for pull requests generally available on October 15. It broadens detection to changes in PHP, Shell/Bash, Terraform, Dockerfiles, JSP, Blazor, and other areas not currently covered by CodeQL. But GitHub explicitly marks the findings advisory: they do not fail the code-scanning check and cannot block merges through rulesets.</p>
+<div class="why"><strong>Why this matters</strong><br>For high-risk repositories, add a human or workflow policy that converts critical advisory findings into an explicit merge decision with a named owner and due date.</div>
+<p><a href="https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available/">GitHub announcement</a> · <a href="https://docs.github.com/en/code-security/concepts/code-scanning/ai-powered-security-detections">GitHub documentation and limitations</a></p>
+
+<h3>4. Model retirement is an integration test</h3>
+<p>GitHub retires several Copilot models today, including GPT-5.4, GPT-5.4 mini, GPT-5.5, Gemini 3.7 Flash, GPT-5 mini, and Grok 4.5, with suggested replacements. Any workflow that depends on a model name—or on undocumented behavior from one model—should be treated like a dependency upgrade, not a cosmetic picker change.</p>
+<div class="why"><strong>Why this matters</strong><br>Keep prompts, tool schemas, expected outputs, and a small evaluation set versioned so a model swap can be tested before it quietly changes agent behavior.</div>
+<p><a href="https://github.blog/changelog/2026-09-18-upcoming-deprecation-of-selected-github-copilot-models-in-mid-october/">GitHub deprecation notice</a></p>
+
+<h2>Tool spotlight: GitHub AI Scan for pull requests</h2>
+<div class="spotlight">
+<p><strong>What it does.</strong> AI Scan reviews qualifying pull-request changes with an AI-based security engine and posts findings beside CodeQL results. It can explain the risk and often suggest a remediation. Current detection categories include injection, weak cryptography, access-control failures, sensitive-data exposure, misconfiguration, authentication failures, unsafe deserialization, SSRF, and supply-chain risk.</p>
+<p><strong>Why it was built.</strong> Static analysis depends on language models and build support that do not cover every framework or configuration format. AI Scan adds change-focused coverage without requiring a separate build configuration, especially for files such as Dockerfiles, Terraform, PHP, and shell scripts.</p>
+<p><strong>How to use it.</strong></p>
+<ol>
+<li>Enable GitHub code scanning, then enable “AI Scan on pull requests” at the permitted enterprise, organization, or repository level.</li>
+<li>Confirm eligibility and cost first. Public repositories are supported; private and internal organization repositories require GitHub Code Security or GitHub Advanced Security. Usage consumes Code Security AI Credits.</li>
+<li>Open a small pull request containing a representative application or infrastructure change. Confirm that AI Scan ran; it skips fork-based and Dependabot pull requests.</li>
+<li>Triage each finding as a claim to verify. Reproduce the data flow or permission path, then accept, modify, or reject the suggested fix with a short rationale.</li>
+<li>Add your own merge policy for severity levels that must stop delivery. AI Scan itself is advisory and cannot satisfy a ruleset-required blocking check.</li>
+<li>Track findings generated, resolved, dismissed, and reopened. Sample false positives and missed issues so the team knows where a deterministic scanner, test, or manual review remains necessary.</li>
+</ol>
+<p>Start with one repository that contains code CodeQL does not cover well. Run AI Scan for two weeks, classify every finding, and only then decide which categories deserve a team-enforced gate.</p>
+</div>
+<p><a href="https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available/">Release notes</a> · <a href="https://docs.github.com/en/code-security/concepts/code-scanning/ai-powered-security-detections">Setup, coverage, billing, and limitations</a> · <a href="https://hottea.ai/articles/2026-10-16/github-ai-scan-autofix-general-availability">Independent summary of the advisory-only limitation</a></p>
+
+<h2>One thing to try before lunch</h2>
+<p>Choose one advisory signal in your repository—AI Scan, dependency alerts, lint warnings, or an agent review—and write a four-line policy: <strong>severity that blocks</strong>, <strong>required evidence</strong>, <strong>owner</strong>, and <strong>time limit</strong>. Detection becomes useful only when it changes what happens next.</p>
+
+<footer>Sources checked October 19, 2026. Incident claims are attributed to NorForge and independently reported details; product capabilities and limitations are linked to GitHub’s official documentation.</footer>
+</main>
+<script>(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";if(!b)return;const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem(k,n)}catch{}sync()})})();</script>
+</body></html>
