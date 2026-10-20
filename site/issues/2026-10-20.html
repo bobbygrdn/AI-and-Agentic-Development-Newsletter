@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Portability is an agent feature — All Things AI Dev</title>
+<script>
+(() => {
+  const root = document.documentElement;
+  const key = "all-things-ai-dev-theme";
+  const stored = (() => { try { return localStorage.getItem(key); } catch { return null; } })();
+  root.dataset.theme = stored === "dark" || stored === "light" ? stored : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+})();
+</script>
+<style>
+:root{--ink:#202b35;--muted:#66737c;--paper:#fbfaf6;--wash:#f1eee7;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b;--code:#ece8df}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#e9e6df;color:var(--ink);font:17px/1.72 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}.back{display:inline-block;margin:26px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-underline-offset:4px}h1{font:800 clamp(38px,7vw,66px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:16px 0 20px;max-width:760px}h2{font:800 28px/1.12 Arial,sans-serif;letter-spacing:-.025em;margin:42px 0 12px}h3{font:800 21px/1.25 Arial,sans-serif;margin:0 0 10px}.dek{font-size:21px;line-height:1.52;color:#43515b;max-width:730px}.item{border-top:1px solid var(--line);padding:27px 0 4px}.item p{max-width:730px}.why{margin:16px 0 0;padding:12px 15px;border-left:4px solid var(--accent);background:var(--wash);font:700 14px/1.55 Arial,sans-serif}.spotlight{margin:38px 0;padding:clamp(20px,4vw,34px);border:1px solid var(--line);border-radius:18px;background:var(--wash)}.spotlight h2{margin-top:0}.label{display:inline-block;margin-bottom:12px;color:var(--accent);font:800 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}code{background:var(--code);padding:.15em .35em;border-radius:4px;font-size:.9em}.steps{padding-left:1.25em}.steps li{margin:.6em 0}.sources{margin-top:44px;padding-top:22px;border-top:1px solid var(--line)}.sources li{margin:.55em 0}.sources a,a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}footer{margin-top:36px;color:var(--muted);font:12px Arial,sans-serif}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer;white-space:nowrap}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible,.back:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--wash:#282e32;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0;--code:#343b40}:root[data-theme="dark"] body{background:#101315}:root[data-theme="dark"] .dek{color:#d2d9dd}@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}}
+</style></head><body><main class="page">
+<div class="topbar"><div class="eyebrow">Tuesday, October 20, 2026 · Breakfast edition</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Portability is an agent feature</h1>
+<p class="dek">Amazon’s new native PyTorch backend for Trainium is an infrastructure story with a broader lesson: the more autonomous a system becomes, the more valuable its replaceable seams become. Today’s issue turns that idea into a practical agent-development habit.</p>
+
+<h2>What matters this morning</h2>
+
+<article class="item">
+<h3>1. Build your agent around contracts, not vendors</h3>
+<p>TorchNeuron plugs Trainium into PyTorch’s standard device-extension path. That is the useful pattern: application code targets a stable contract while the execution backend changes underneath it. Apply the same idea to agents. Keep task input, tool schemas, approval rules, trace format, and success criteria outside any model-specific prompt. Put provider quirks behind a thin adapter.</p>
+<p class="why">Why this matters: A replaceable model or runtime turns migration from a rewrite into an evaluation exercise.</p>
+</article>
+
+<article class="item">
+<h3>2. Test the seam, not just the happy path</h3>
+<p>“Runs without a rewrite” does not mean “performs identically.” TorchNeuron offers eager execution for debugging, <code>torch.compile</code> for production performance, and low-level kernels when optimization is necessary. For agents, use the same ladder: first verify behavior, then measure latency and cost, and only then optimize. Maintain a small golden set that runs against every supported model and backend, including failures, timeouts, and permission denials.</p>
+<p class="why">Why this matters: Portability claims become trustworthy only when the same acceptance tests survive a backend change.</p>
+</article>
+
+<article class="item">
+<h3>3. Keep authorship accountability even when disclosure rules differ</h3>
+<p>A September study of 281 open-source AI-contribution policies found that 83.3% permitted or encouraged AI use, but 67.3% required substantial human involvement and 43.4% explicitly assigned accountability. Projects may disagree about mandatory disclosure, yet the engineering rule is clearer: every generated change needs a named human owner who can explain it, reproduce its tests, and accept its maintenance burden.</p>
+<p class="why">Why this matters: Provenance is useful context; accountable review is the actual control.</p>
+</article>
+
+<article class="item">
+<h3>4. Budget the whole loop</h3>
+<p>Hardware choice, model choice, retries, tool calls, and human review all belong in one cost model. Reuters reports that Amazon’s goal is to reduce the friction of trying its chips, while Bain’s survey shows review time rising much faster than completed-task volume in AI-heavy workflows. Track cost per accepted task—not cost per token or accelerator-hour—and include reviewer minutes in the denominator.</p>
+<p class="why">Why this matters: The cheapest run can still be the most expensive result if it creates retries or review debt.</p>
+</article>
+
+<section class="spotlight">
+<span class="label">Tool spotlight · New public beta</span>
+<h2>TorchNeuron</h2>
+<p><strong>What it does.</strong> TorchNeuron is an Apache-2.0 native PyTorch backend for AWS Trainium 2 and 3. It registers Trainium as the <code>neuron</code> device, supports eager mode and <code>torch.compile</code>, and exposes standard profiling and distributed APIs.</p>
+<p><strong>Why it was built.</strong> PyTorch libraries move quickly, while hardware-specific ports create migration and revalidation work. TorchNeuron uses PyTorch’s accelerator-agnostic extension points so existing code and tools can move to Trainium with minimal changes.</p>
+<p><strong>How to use it.</strong></p>
+<ol class="steps">
+<li>Start on a Trainium 2 or 3 instance and install the Neuron 2.33 public-beta package, <code>torch-neuronx</code>, following the AWS quickstart.</li>
+<li>For a first correctness pass, move the model and tensors to <code>neuron</code>; code already using <code>torch.accelerator</code> may need no source change.</li>
+<li>For production, compile with <code>torch.compile(model, backend="neuron")</code>, then compare outputs, throughput, latency, and total cost against your current backend.</li>
+<li>Keep the benchmark and acceptance suite backend-neutral so the experiment stays reversible.</li>
+</ol>
+<p class="why">Why this matters: TorchNeuron is useful today, but its bigger gift is architectural leverage—the ability to make infrastructure compete for your workload.</p>
+</section>
+
+<h2>One thing to try before lunch</h2>
+<p>Choose one agent task you run often. Write a six-line contract: input, permitted tools, approval boundary, expected artifact, acceptance test, and budget. Run it once on your default model and once on a second model or runtime. Record only three numbers: pass/fail, elapsed time, and reviewer minutes. You now have the beginning of a portability harness.</p>
+<p class="why">Why this matters: A tiny cross-backend test reveals hidden coupling before it becomes platform lock-in.</p>
+
+<section class="sources"><h2>Sources</h2><ul>
+<li><a href="https://pytorch.org/blog/introducing-torchneuron-native-pytorch-backend-for-aws-trainium/">PyTorch: Introducing TorchNeuron</a> — October 19, 2026</li>
+<li><a href="https://awsdocs-neuron.readthedocs-hosted.com/en/latest/torch/about-pytorch-neuron.html">AWS Neuron documentation: What is TorchNeuron?</a></li>
+<li><a href="https://www.aboutamazon.com/news/innovation-at-amazon/torchneuron-pytorch-aws-trainium-chips-ai">Amazon: TorchNeuron runs PyTorch on Trainium</a> — October 19, 2026</li>
+<li><a href="https://www.reuters.com/business/retail-consumer/amazon-says-its-ai-chips-will-work-with-popular-coding-language-challenging-2026-10-19/">Reuters: Amazon opens Trainium to PyTorch workloads</a> — October 19, 2026</li>
+<li><a href="https://arxiv.org/abs/2609.07542">Hora, Robbes &amp; Zacchiroli: The landscape of AI policies in popular open-source projects</a> — September 2026</li>
+<li><a href="https://www.bain.com/insights/the-missing-architecture-for-agentic-software-development-technology-report-2026/">Bain: The missing architecture for agentic software development</a> — September 29, 2026</li>
+</ul></section>
+<footer>Reporting checked October 20, 2026. Product capabilities may change during beta.</footer>
+</main><script>
+(() => {
+  const root = document.documentElement, button = document.getElementById("theme-toggle"), key = "all-things-ai-dev-theme";
+  const sync = () => { const dark = root.dataset.theme === "dark"; button.textContent = dark ? "Light mode" : "Dark mode"; button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode"); button.setAttribute("aria-pressed", String(dark)); };
+  sync();
+  button.addEventListener("click", () => { root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark"; try { localStorage.setItem(key, root.dataset.theme); } catch {} sync(); });
+})();
+</script></body></html>
