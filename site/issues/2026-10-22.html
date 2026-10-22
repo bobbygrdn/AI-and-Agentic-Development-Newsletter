@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Choose the workflow before the agent — All Things AI Dev</title>
+<script>
+(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();
+</script>
+<style>
+:root{--ink:#202b35;--muted:#66737c;--paper:#fbfaf6;--wash:#f1eee7;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b;--code:#ece8df}*{box-sizing:border-box}body{margin:0;background:#e9e6df;color:var(--ink);font:17px/1.72 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}.back{display:inline-block;margin:26px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-underline-offset:4px}h1{font:800 clamp(38px,7vw,66px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:16px 0 20px;max-width:760px}h2{font:800 28px/1.12 Arial,sans-serif;letter-spacing:-.025em;margin:42px 0 12px}h3{font:800 21px/1.25 Arial,sans-serif;margin:0 0 10px}.dek{font-size:21px;line-height:1.52;color:#43515b;max-width:730px}.item{border-top:1px solid var(--line);padding:27px 0 4px}.item p{max-width:730px}.why{margin:16px 0 0;padding:12px 15px;border-left:4px solid var(--accent);background:var(--wash);font:700 14px/1.55 Arial,sans-serif}.spotlight{margin:38px 0;padding:clamp(20px,4vw,34px);border:1px solid var(--line);border-radius:18px;background:var(--wash)}.spotlight h2{margin-top:0}.label{display:inline-block;margin-bottom:12px;color:var(--accent);font:800 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.steps{padding-left:1.25em}.steps li{margin:.6em 0}code{background:var(--code);padding:.15em .35em;border-radius:4px;font-size:.9em}.sources{margin-top:44px;padding-top:22px;border-top:1px solid var(--line)}.sources li{margin:.55em 0}.sources a,a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}footer{margin-top:36px;color:var(--muted);font:12px Arial,sans-serif}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer;white-space:nowrap}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible,.back:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--wash:#282e32;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0;--code:#343b40}:root[data-theme="dark"] body{background:#101315}:root[data-theme="dark"] .dek{color:#d2d9dd}@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}}
+</style></head><body><main class="page">
+<div class="topbar"><div class="eyebrow">Thursday, October 22, 2026 · Breakfast edition</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Choose the workflow before the agent</h1>
+<p class="dek">Anthropic’s Claude Duet is the latest sign that always-on agents are moving into everyday work. The useful counter-move for developers is selection: start with the workflow, define the value, then choose the smallest agent architecture that can prove it.</p>
+
+<h2>What matters this morning</h2>
+
+<article class="item">
+<h3>1. “Agentic” is a workflow property, not a product label</h3>
+<p>Claude Duet is designed to run in the background, brief users on connected apps, surface tasks, and ask for approval when needed. That is a meaningful product direction—but it does not make every task a good agent candidate. If a process is deterministic, a normal workflow or RPA may be cheaper, easier to test, and easier to explain. Reserve agents for work that genuinely needs context, coordination, or judgment inside explicit boundaries.</p>
+<p class="why">Why this matters: The best agent is often the one you can replace with a simpler system after mapping the workflow.</p>
+</article>
+
+<article class="item">
+<h3>2. Measure the old process before you automate the new one</h3>
+<p>Recent practitioner guidance emphasizes a clear baseline: time per case, error rate, escalation rate, queue age, and human minutes. Record the current distribution, not just an average. Then define what “better” means before writing prompts or wiring tools. A prototype that saves model tokens but increases exception handling is not an improvement.</p>
+<p class="why">Why this matters: Without a baseline, an agent demo can create motion without creating value.</p>
+</article>
+
+<article class="item">
+<h3>3. Give the agent a budget and a stopping rule</h3>
+<p>Long-running agents need explicit limits for time, tool calls, parallel workers, and spend. Make the agent return a useful partial result when it reaches a limit, with the unresolved work and evidence attached. For repeated workflows, log the budget consumed by each stage so you can see whether failures come from the model, the tools, or an over-ambitious plan.</p>
+<p class="why">Why this matters: Bounded failure is a product feature; unbounded persistence is an operating expense.</p>
+</article>
+
+<article class="item">
+<h3>4. Separate exploration from commitment</h3>
+<p>Let agents search, summarize, compare, and draft in parallel—but route writes, purchases, messages, deployments, and other durable effects through a narrow commit step. This gives you the speed benefit of multiple workers without making every exploratory branch an independent source of side effects. Review the final structured proposal, not a pile of hidden subagent transcripts.</p>
+<p class="why">Why this matters: Parallel reasoning should expand options, not multiply irreversible actions.</p>
+</article>
+
+<section class="spotlight">
+<span class="label">Tool spotlight · Public beta</span>
+<h2>OpenAI Agents API</h2>
+<p><strong>What it does.</strong> The Agents API is a managed cloud-agent service built around the Codex harness. It lets developers specify a task, model, tools, and environment; use hosted or partner sandboxes; maintain long sessions; search for tools on demand; and delegate bounded work to subagents.</p>
+<p><strong>Why it was built.</strong> Teams were rebuilding the same orchestration layer: context compaction, tool routing, parallel execution, durable sessions, and sandbox management. The API packages those mechanics so developers can focus on their domain tools, knowledge, and user experience.</p>
+<p><strong>How to use it.</strong></p>
+<ol class="steps">
+<li>Start with the <a href="https://developers.openai.com/agents-api">Agents API overview</a> and choose a small workflow with a measurable baseline.</li>
+<li>Define the agent’s environment and tools narrowly. Load tool definitions on demand rather than exposing an entire catalog on every turn.</li>
+<li>Set a session budget: maximum duration, tool-call count, spend, and concurrent subagents. Return a partial artifact when the budget is exhausted.</li>
+<li>Run the same evaluation set against the old process and the agent. Compare completion quality, latency, cost, and human correction time before widening access.</li>
+</ol>
+<p class="why">Why this matters: A managed harness can remove plumbing, but it does not remove the developer’s job of choosing the right workflow and proving the result.</p>
+</section>
+
+<h2>One thing to try before lunch</h2>
+<p>Take one task you are tempted to agentify. Write two alternatives: a deterministic workflow and a bounded agent. For each, list the inputs, tools, human approvals, success metric, maximum cost, and failure handoff. If the deterministic version wins on the baseline, keep it—and save your agent budget for a harder problem.</p>
+<p class="why">Why this matters: Comparing architectures is faster than discovering after launch that the “agent” was expensive glue code.</p>
+
+<section class="sources"><h2>Sources</h2><ul>
+<li><a href="https://www.businessinsider.com/anthropic-answers-meta-openai-new-personal-agent-claude-duet-2026-10">Business Insider: Anthropic launches Claude Duet</a> — October 21, 2026</li>
+<li><a href="https://www.techradar.com/pro/stop-choosing-the-wrong-agentic-ai-use-cases">TechRadar Pro: Stop choosing the wrong Agentic AI use cases</a> — October 21, 2026</li>
+<li><a href="https://openai.com/index/introducing-the-agents-api/">OpenAI: Introducing the Agents API</a> — September 10, 2026</li>
+<li><a href="https://developers.openai.com/agents-api">OpenAI Developers: Agents API overview</a></li>
+<li><a href="https://openai.com/index/devday-2026-recap/">OpenAI: DevDay 2026 recap</a> — September 29, 2026</li>
+<li><a href="https://www.anthropic.com/news/2026-usage-policy-update">Anthropic: 2026 Usage Policy update</a> — October 2026</li>
+</ul></section>
+<footer>Reporting checked October 22, 2026. Product capabilities and availability may change during public beta.</footer>
+</main><script>
+(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{r.dataset.theme=r.dataset.theme==="dark"?"light":"dark";try{localStorage.setItem(k,r.dataset.theme)}catch{}sync()})})();
+</script></body></html>
