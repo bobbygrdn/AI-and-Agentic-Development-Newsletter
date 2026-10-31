@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Make agent work reviewable by construction · All Things AI Dev</title>
+<meta name="description" content="A practical Saturday recap on model-routing agents, GitHub Agentic Workflows, Gemini API updates, and reviewable AI development.">
+<script>(()=>{const r=document.documentElement,k="all-things-ai-dev-theme",s=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=s==="dark"||s==="light"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<style>
+:root{--ink:#202b35;--muted:#62717b;--paper:#fbfaf6;--page:#e9e6df;--line:#ddd9cf;--accent:#a33d25;--blue:#31586b}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}.page{max-width:900px;margin:32px auto;background:var(--paper);padding:clamp(24px,6vw,72px);box-shadow:0 12px 40px #24313a19}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font:800 clamp(38px,7vw,64px)/.98 Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}h2{font:700 30px/1.15 Georgia,serif;margin:42px 0 10px}h3{font:700 21px/1.25 Arial,sans-serif;margin:30px 0 6px}p{color:#43515b;max-width:720px}.dek{font-size:21px;line-height:1.5}.back{display:inline-block;margin:20px 0 8px;color:var(--blue);font:700 13px Arial,sans-serif;text-decoration:none}.back:hover{text-decoration:underline}.why{border-left:4px solid var(--accent);padding:10px 16px;margin:14px 0 22px;background:#a33d250d}.why strong{font-family:Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}a{color:var(--blue);text-underline-offset:4px}li{margin:10px 0;color:#43515b}.spotlight{border:1px solid var(--line);padding:22px 24px;margin-top:18px}.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:8px 12px;font:700 11px Arial,sans-serif;cursor:pointer}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}code{font-size:.92em;background:#62717b12;padding:.12em .3em;border-radius:3px}footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#edf0f1;--muted:#b3bdc4;--paper:#1e2225;--page:#101315;--line:#3c4348;--accent:#ef9d7e;--blue:#9dcde0}:root[data-theme="dark"] p,:root[data-theme="dark"] li{color:#d2d9dd}:root[data-theme="dark"] .why{background:#ef9d7e12}
+@media(max-width:600px){body{background:var(--paper)}.page{margin:0;box-shadow:none}.topbar{align-items:flex-start}.theme-toggle{padding:7px 10px}.dek{font-size:19px}}
+</style>
+</head>
+<body><main class="page">
+<div class="topbar"><div class="eyebrow">Saturday, October 31, 2026 · Weekly recap</div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button></div>
+<a class="back" href="../index.html">← Back to all issues</a>
+<h1>Make agent work reviewable by construction</h1>
+<p class="dek">This week’s developer releases make agents better at choosing models, running repeatable repository work, and operating from a terminal or screen. The engineering lesson is to make every autonomous step produce an artifact a human—or the next tool—can inspect, test, and reject.</p>
+
+<h2>The week in practical AI development</h2>
+
+<h3>1. Model choice is becoming an orchestration problem</h3>
+<p>GitHub made Copilot Fusion generally available on October 28. Instead of asking developers to pick a model for every task, Fusion routes and, when useful, combines models across Standard, High, and Max effort levels. GitHub reports that Fusion Max scored 60 on the Artificial Analysis Coding Agent Index—within two points of Claude Code with Opus 5.5 Max—at about half the average API cost and tokens and roughly 40% less time per task. Those figures are vendor-reported or benchmark-specific, so teams should measure their own repositories before treating them as a guarantee.</p>
+<div class="why"><strong>Why this matters</strong><br>Model selection is now part of application architecture. Define task classes, quality gates, latency budgets, and cost ceilings so routing optimizes the whole workflow—not just the model’s first answer.</div>
+<p><a href="https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion/">GitHub’s Fusion release</a> · <a href="https://indianexpress.com/article/technology/tech-news-technology/github-to-developers-copilot-fusion-promises-frontier-level-ai-coding-at-half-the-cost-10941177/">Independent reporting from The Indian Express</a> · <a href="https://www.llms.blog/posts/github-copilot-fusion-multi-model-routing">Independent technical analysis</a></p>
+
+<h3>2. Natural-language workflows are becoming executable repository policy</h3>
+<p>GitHub Agentic Workflows reached general availability on October 28. Developers describe reasoning-based automation in Markdown; the system compiles it into standard GitHub Actions YAML and runs coding agents for tasks such as issue triage, CI failure analysis, documentation updates, and test writing. Because the result is still Actions, existing runner groups and policy controls remain part of the execution environment.</p>
+<div class="why"><strong>Why this matters</strong><br>A workflow prompt is production configuration once it can change a repository. Review it like code: pin dependencies, restrict permissions, test on fixtures, and require a small, auditable output.</div>
+<p><a href="https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available/">GitHub Agentic Workflows announcement</a> · <a href="https://aidevpulse.com/2026/10/29/copilot-fusion-agentic-workflows-vscode-agent-host/">Independent developer analysis</a> · <a href="https://docs.github.com/en/actions">GitHub Actions security and permissions documentation</a></p>
+
+<h3>3. Tool interfaces are widening from APIs to terminals and screens</h3>
+<p>Google released the <code>gemini-api</code> CLI in beta on October 27 as a stateless, zero-dependency client for agents, scripts, and CI. On October 30, Google also made its Computer Use tool generally available across the Interactions and GenerateContent APIs. The computer-use documentation makes the boundary explicit: your application must run a loop that receives proposed actions, executes them on the client side, and returns the resulting screen state.</p>
+<div class="why"><strong>Why this matters</strong><br>When an agent can operate a shell or screen, the client loop becomes a security boundary. Validate actions, keep credentials outside the agent’s reach, and log the before-and-after state instead of trusting a success message.</div>
+<p><a href="https://ai.google.dev/gemini-api/docs/changelog">Google Gemini API release notes</a> · <a href="https://ai.google.dev/gemini-api/docs/computer-use">Google Computer Use documentation</a> · <a href="https://azeemhassni.com/blog/wire-google-gemini-api-cli-beta/">Independent Gemini API CLI coverage</a></p>
+
+<h3>4. Agentic development is moving toward explicit lifecycle artifacts</h3>
+<p>Microsoft’s October 27 guidance on agentic software delivery describes three primitives—Plan, Build, and Verify—with outputs such as acceptance criteria, candidate implementations, and discrete evidence. Android Studio’s October 28 stable release makes “bring your own agent” a first-class workflow, including an agent skills manager and AI code review. Across both announcements, the pattern is the same: agents produce work inside a chain of artifacts rather than replacing the chain.</p>
+<div class="why"><strong>Why this matters</strong><br>For your next agent task, define the handoff objects first: goal, constraints, diff, tests, screenshots or traces, and unresolved risks. Better artifacts make review faster and model changes less disruptive.</div>
+<p><a href="https://commandline.microsoft.com/new-agentic-software-delivery-primitives/">Microsoft’s delivery-primitives guidance</a> · <a href="https://developer.android.com/blog/posts/ai-agents-android-studio-integration">Android Developers Blog, October 28</a> · <a href="https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/">GitHub Universe 2026 overview</a></p>
+
+<h2>Tool spotlight: Gemini API CLI</h2>
+<div class="spotlight">
+<p><strong>What it does.</strong> <code>gemini-api</code> is an open-source beta command-line client for the Gemini API. It is stateless and has no runtime dependencies, so it can be called by coding agents, shell scripts, and CI jobs. It can generate text and media, analyze local files, run managed agents, and expose the underlying Interactions API request shape when a simple command is not enough.</p>
+<p><strong>Why it was built.</strong> Agents need a predictable interface they can invoke without a full SDK project or a long-lived interactive session. A small CLI makes Gemini capabilities composable with existing Unix pipelines, repository automation, and other coding agents while keeping the application responsible for state and permissions.</p>
+<p><strong>How to use it.</strong></p>
+<ol>
+<li>Create a billed Gemini API key and expose it to the process as <code>GEMINI_API_KEY</code> or <code>GOOGLE_API_KEY</code>; do not commit it or pass it through untrusted prompts.</li>
+<li>Install a pinned beta release using the <a href="https://ai.google.dev/gemini-api/docs/cli">official CLI guide</a>, or use the documented Go installation path. Pin the version in CI because the command surface is still evolving.</li>
+<li>Start with a read-only task such as analyzing a PDF or summarizing test logs, and request structured output when another command will consume the result.</li>
+<li>For repository work, have the agent produce a plan and a patch proposal first. Keep file writes, package installation, and network access behind explicit application-side controls.</li>
+<li>For managed-agent or computer-use tasks, implement the continuation and client-action loop yourself. Validate every proposed action and record the returned evidence.</li>
+<li>Measure usefulness on your own fixture set: correctness, latency, token cost, failure recovery, and the amount of human review required.</li>
+</ol>
+<p>A good first experiment is a CI triage helper: pass a failed test log and the relevant diff, ask for a JSON diagnosis with confidence and next checks, then require a human to approve any issue comment or code change.</p>
+</div>
+<p><a href="https://ai.google.dev/gemini-api/docs/cli">Official Gemini API CLI guide</a> · <a href="https://github.com/google-gemini/gemini-api-cli">Source repository</a> · <a href="https://ai-digest.fjgarciahurtado.com/sources/2026/10/2026-10-28-gemini-api-cli-beta/">Independent release summary</a></p>
+
+<h2>One practice to take into next week</h2>
+<p>Turn one recurring maintenance task into a four-stage pipeline: <strong>plan</strong>, <strong>act</strong>, <strong>verify</strong>, <strong>report</strong>. Give the agent a narrow permission set and require a machine-readable result at each boundary. If a stage cannot explain what it changed and how it checked the change, it is not ready to run unattended.</p>
+
+<footer>Sources checked October 31, 2026. Product claims link to primary documentation and are cross-checked with independent reporting where available. Benchmark figures are attributed to their publishers; recommendations are synthesis.</footer>
+</main>
+<script>(()=>{const r=document.documentElement,b=document.getElementById("theme-toggle"),k="all-things-ai-dev-theme";if(!b)return;const sync=()=>{const d=r.dataset.theme==="dark";b.textContent=d?"Light mode":"Dark mode";b.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");b.setAttribute("aria-pressed",String(d))};sync();b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem(k,n)}catch{}sync()})})();</script>
+</body></html>
