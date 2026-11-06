@@ -5,6 +5,8 @@ on:
     paths:
       - "site/**"
       - ".github/workflows/pages.yml"
+  # Use a fresh workflow_dispatch run after a failed Pages deployment.
+  # Re-running the same run can create duplicate github-pages artifacts.
   workflow_dispatch:
 permissions:
   contents: read
